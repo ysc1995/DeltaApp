@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">DeltaApp</string>
+
+    <!--find my trip-->
+    <string name="ft_Title">Find My Trip</string>
+    <string name="ft_fname">First Name</string>
+    <string name="ft_lname">Last Name</string>
+    <string name="ft_findbutton">Find it</string>
+    <string name="ft_confirmationNum">Enter Confirmation#</string>
+
+    <!--bottom menu-->
+    <string name="bm_mytrip">My Trip</string>
+    <string name="bm_today">Today</string>
+    <string name="bm_book">Book</string>
+    <string name="bm_feed">Feed</string>
+    <string name="bm_more">More</string>
 </resources>
