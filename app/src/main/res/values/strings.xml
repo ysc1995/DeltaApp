@@ -1,6 +1,25 @@
 <resources>
     <string name="app_name">DeltaApp</string>
 
+
+
+    <!--Book A Flight-->
+    <string name="bf_tableft">ROUND-TRIP</string>
+    <string name="bf_tabcenter">ONE-WAY</string>
+    <string name="bf_tabright">MULTI-CITY</string>
+
+    <string name="bf_from">From</string>
+    <string name="bf_to">To</string>
+    <string name="bf_dates">Dates</string>
+    <string name="bf_passengers">PASSENGERS</string>
+    <string name="bf_showpricein">SHOW PRICE IN</string>
+    <string name="bf_money">Money</string>
+    <string name="bf_miles">Miles</string>
+    <string name="bf_findflights">Find Flights</string>
+    <string name="bf_minus">-</string>
+    <string name="bf_plus">+</string>
+    <string name= "bf_moreflights">+ MORE FLIGHTS</string>
+
     <!--find my trip-->
     <string name="ft_Title">Find My Trip</string>
     <string name="ft_fname">First Name</string>
@@ -14,4 +33,8 @@
     <string name="bm_book">Book</string>
     <string name="bm_feed">Feed</string>
     <string name="bm_more">More</string>
+
+
+
+
 </resources>
