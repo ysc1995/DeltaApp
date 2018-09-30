@@ -58,6 +58,7 @@ public class FindTripActivity extends AppCompatActivity {
         String lName = tvLname.getText().toString();
         String confirmation = tvConfirmation.getText().toString();
 
+        //
 
     }
 }
