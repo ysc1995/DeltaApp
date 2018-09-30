@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0a3fa9"
+    tools:context=".ui.findtrip.FindTripActivity"
+    tools:layout_editor_absoluteY="50dp">
+
+    <LinearLayout
+        android:id="@+id/linearlayout_findmytrip"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="198dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginStart="29dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_findmytrip">
+
+        <EditText
+            android:id="@+id/tv_fname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="@string/ft_fname"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/tv_lname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="@string/ft_lname"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/tv_confirmation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="@string/ft_confirmationNum"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#ed2a5b"
+            android:text="@string/ft_findbutton"
+            android:textColor="#ffff" />
+
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/tv_findmytrip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="29dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:background="#0a3fa9"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/ft_Title"
+        android:textColor="#ffff"
+        android:textSize="27dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearlayout_findmytrip"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="44dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="49dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearlayout_findmytrip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_findmytrip"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/delta_icon" />
+
+    <include layout="@layout/menu_bottom"/>
+</android.support.constraint.ConstraintLayout>
