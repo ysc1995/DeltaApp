@@ -47,8 +47,9 @@ public class FindTripActivity extends AppCompatActivity {
 
             }
         });
-        
 
+
+        
     }
 
     @OnClick(R.id.button)
