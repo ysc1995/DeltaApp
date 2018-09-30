@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <TextView
+        android:id="@+id/txt_bf_nums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/rectangle_border"
+        android:padding="10dp"
+        android:text="2"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_bf_title1"
+        app:layout_constraintStart_toStartOf="@+id/tv_bf_title1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bf_title1" />
+
+    <Button
+        android:id="@+id/btn_bf_minus"
+        android:layout_width="42dp"
+        android:layout_height="52dp"
+        android:text="@string/bf_plus"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txt_bf_nums"
+        app:layout_constraintStart_toEndOf="@+id/txt_bf_nums" />
+
+    <Button
+        android:id="@+id/btn_bf_plus"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:text="@string/bf_minus"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txt_bf_nums"
+        app:layout_constraintEnd_toStartOf="@+id/txt_bf_nums"
+        app:layout_constraintStart_toStartOf="@+id/tv_bf_title1" />
+
+    <TextView
+        android:id="@+id/tv_bf_title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/bf_passengers"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_bf_title2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_bf_title2" />
+
+    <TextView
+        android:id="@+id/tv_bf_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="185dp"
+        android:layout_marginEnd="7dp"
+        android:text="@string/bf_showpricein"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_bf_money" />
+
+    <TextView
+        android:id="@+id/tv_bf_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="49dp"
+        android:background="@drawable/rectangle_border"
+        android:padding="10dp"
+        android:text="@string/bf_miles"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_bf_money2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_bf_money2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/rectangle_border"
+        android:padding="10dp"
+        android:text="@string/bf_money"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_bf_title2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bf_title2" />
+
+    <TextView
+        android:id="@+id/tv_bf_find"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="39dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="38dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/bf_findflights"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bf_plus" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/bf_moreflights"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_bf_title1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_bookflights"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
