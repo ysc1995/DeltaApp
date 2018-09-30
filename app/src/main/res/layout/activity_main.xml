@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/colorMainBackground"
+    tools:context=".ui.main.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/tv_content_title"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:background="#0a3fa9"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/ft_Title"
+        android:textColor="#ffff"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="71dp"
+        android:layout_height="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/delta_icon" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_main"
+        android:layout_width="348dp"
+        android:layout_height="458dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="106dp" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/menu_bottom"
+        />
+
+</RelativeLayout>

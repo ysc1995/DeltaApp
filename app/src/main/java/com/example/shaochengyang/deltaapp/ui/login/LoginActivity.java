@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui;
+package com.example.shaochengyang.deltaapp.ui.login;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

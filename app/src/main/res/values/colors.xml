@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--main activity-->
+    <color name="colorMainBackground">#0a3fa9</color>
+    <color name="colorTabText">#c5c9d2</color>
+
 </resources>

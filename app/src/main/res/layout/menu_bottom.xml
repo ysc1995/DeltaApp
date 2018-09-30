@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="81dp"
-    tools:showIn="@layout/activity_find_trip">
+    tools:layout_editor_absoluteY="621dp"
+    tools:showIn="@layout/activity_main">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="2dp"
+        android:layout_height="wrap_content"
+        android:background="#51505d"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabSelectedTextColor="@android:color/background_light"
+        app:tabTextColor="@color/colorTabText">
 
         <android.support.design.widget.TabItem
             android:layout_width="wrap_content"

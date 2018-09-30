@@ -19,6 +19,7 @@
     <string name="bf_minus">-</string>
     <string name="bf_plus">+</string>
     <string name= "bf_moreflights">+ MORE FLIGHTS</string>
+    <string name="bf_set_connection_airport">SET CONNECTION AIRPORT ></string>
 
     <!--find my trip-->
     <string name="ft_Title">Find My Trip</string>
