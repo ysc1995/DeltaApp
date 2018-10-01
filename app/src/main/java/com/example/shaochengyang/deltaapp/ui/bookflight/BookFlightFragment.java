@@ -37,7 +37,7 @@ public class BookFlightFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 pagerBookflight.setCurrentItem(tab.getPosition());
-                
+
             }
 
             @Override

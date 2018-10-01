@@ -36,6 +36,11 @@
     <string name="bm_book">Book</string>
     <string name="bm_feed">Feed</string>
     <string name="bm_more">More</string>
+    
+    <!--show flights-->
+    <string name="sf_show_price_in">SHOW PRICE IN</string>
+    <string name="sf_price">PRICE</string>
+
 
 
     <!--login-->
