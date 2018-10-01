@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">DeltaApp</string>
 
-
+    <!--fb signin-->
+    <string name="facebook_app_id">1896134040471061</string>
+    <string name="fb_login_protocol_scheme">fb1896134040471061</string>
 
     <!--Book A Flight-->
     <string name="bf_tableft">ROUND-TRIP</string>
@@ -36,6 +38,8 @@
     <string name="bm_more">More</string>
 
 
-
+    <!--login-->
+    <string name="login_title">Log In To My Delta</string>
+    <string name="login_button">LOG IN</string>
 
 </resources>
