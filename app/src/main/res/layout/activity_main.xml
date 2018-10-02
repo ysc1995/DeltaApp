@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:background="#0a3fa9"
+        android:background="@color/colorMainBackground"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/ft_Title"
