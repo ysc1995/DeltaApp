@@ -45,6 +45,9 @@
     <string name="es_title">MAIN CABIN</string>
     <string name="es_clearButton">CLEAR SELECTION</string>
 
+    <!--first class seat-->
+    <string name="fcs_title">FIRST CLASS</string>
+
 
     <!--login-->
     <string name="login_title">Log In To My Delta</string>
