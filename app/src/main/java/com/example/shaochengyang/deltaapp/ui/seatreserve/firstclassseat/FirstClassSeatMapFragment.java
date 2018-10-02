@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.seatreserve;
+package com.example.shaochengyang.deltaapp.ui.seatreserve.firstclassseat;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,12 +13,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.shaochengyang.deltaapp.R;
+import com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatAdaptor;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EcoSeatMapFragment extends Fragment {
+public class FirstClassSeatMapFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     List<Seat> seatList;
@@ -69,9 +70,9 @@ public class EcoSeatMapFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                    int numticket = numofTicket;
-                    adapter = new EcoSeatAdaptor(seatList, view.getContext(), numticket);
-                    recyclerView.setAdapter(adapter);
+                int numticket = numofTicket;
+                adapter = new EcoSeatAdaptor(seatList, view.getContext(), numticket);
+                recyclerView.setAdapter(adapter);
 
             }
         });

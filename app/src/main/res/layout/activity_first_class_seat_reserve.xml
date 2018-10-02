@@ -4,17 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.seatreserve.ecoseat.EcoSeatReserveActivity"
-    tools:layout_editor_absoluteY="25dp">
-
+    tools:context=".ui.seatreserve.firstclassseat.FirstClassSeatReserveActivity">
 
     <fragment
-        android:id="@+id/fragment"
-        android:name="com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatMapFragment"
+        android:id="@+id/fragment2"
+        android:name="com.example.shaochengyang.deltaapp.ui.seatreserve.firstclassseat.FirstClassSeatMapFragment"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="572dp"
+        app:layout_constraintBaseline_toBaselineOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

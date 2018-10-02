@@ -20,7 +20,7 @@
     <string name="bf_findflights">Find Flights</string>
     <string name="bf_minus">-</string>
     <string name="bf_plus">+</string>
-    <string name= "bf_moreflights">+ MORE FLIGHTS</string>
+    <string name="bf_moreflights">+ MORE FLIGHTS</string>
     <string name="bf_set_connection_airport">SET CONNECTION AIRPORT ></string>
 
     <!--find my trip-->
@@ -36,7 +36,7 @@
     <string name="bm_book">Book</string>
     <string name="bm_feed">Feed</string>
     <string name="bm_more">More</string>
-    
+
     <!--show flights-->
     <string name="sf_show_price_in">SHOW PRICE IN</string>
     <string name="sf_price">PRICE</string>
