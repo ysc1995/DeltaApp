@@ -10,6 +10,15 @@ public class Seat {
     String id;
     int type;
     boolean visible;
+    Boolean ischoosed;
+
+    public Boolean getIschoosed() {
+        return ischoosed;
+    }
+
+    public void setIschoosed(Boolean ischoosed) {
+        this.ischoosed = ischoosed;
+    }
 
     public boolean isVisible() {
         return visible;
