@@ -18,11 +18,11 @@ import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SeatMapFragment extends Fragment {
+public class EcoSeatMapFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     List<Seat> seatList;
-    Button button;
+    Button clearButton;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,34 +31,48 @@ public class SeatMapFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
 
-        button=view.findViewById(R.id.button);
-        RecyclerView.LayoutManager manager = new GridLayoutManager(view.getContext(),5);
+
+        clearButton=view.findViewById(R.id.clearButton);
+        RecyclerView.LayoutManager manager = new GridLayoutManager(view.getContext(),4);
 
         recyclerView.setLayoutManager(manager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         seatList = new ArrayList<>();
 
-        for (int i = 0 ; i < 8 ; i ++){
+        for (int i = 0 ; i < 47 ; i ++){
+            //33 seats total in main cabin
+            //14 seats (7 rows in First Class
             Seat seat = new Seat();
             seat.setId(""+i);
             seat.setIsselected(false);
+            if(i%4==2||i==24||i==28){  //seat id = 19 & 23 set for the door
+                seat.setVisible(false);
+            }else{
+                seat.setVisible(true);
+            }
             if(i==3||i==4){
                 seat.setIsselected(true);
+                seat.setType(seat.reservedtype);
+            }else {
+                seat.setType(seat.unselectedtype);
             }
-            seat.setType(seat.selectedtype);
             seatList.add(seat);
         }
 
-        adapter = new SeatAdaptor(seatList, view.getContext());
+        //TODO get the parameter from booking ticket for numofTicket
+        final int numofTicket = 2;
+
+        adapter = new EcoSeatAdaptor(seatList, view.getContext() , numofTicket);
         recyclerView.setAdapter(adapter);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i = 0 ; i < 8 ; i ++){
-                    adapter = new SeatAdaptor(seatList, view.getContext());
+
+                    int numticket = numofTicket;
+                    adapter = new EcoSeatAdaptor(seatList, view.getContext(), numticket);
                     recyclerView.setAdapter(adapter);
-                }
+
             }
         });
 
