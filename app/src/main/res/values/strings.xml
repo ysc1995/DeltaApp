@@ -41,6 +41,9 @@
     <string name="sf_show_price_in">SHOW PRICE IN</string>
     <string name="sf_price">PRICE</string>
 
+    <!--eco seat-->
+    <string name="es_title">MAIN CABIN</string>
+    <string name="es_clearButton">CLEAR SELECTION</string>
 
 
     <!--login-->
