@@ -47,6 +47,7 @@ dependencies {
 
     //google map
     implementation 'com.google.maps:google-maps-services:0.1.20'
+
     implementation 'com.google.gms:google-services:4.1.0'
 }
 
