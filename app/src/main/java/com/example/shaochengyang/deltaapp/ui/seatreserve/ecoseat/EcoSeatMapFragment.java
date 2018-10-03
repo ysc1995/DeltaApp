@@ -70,7 +70,9 @@ public class EcoSeatMapFragment extends Fragment {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                for (int i = 0 ; i < 47 ; i ++){
+                    seatList.get(i).setIschoosed(false);
+                }
                     int numticket = numofTicket;
                     adapter = new EcoSeatAdaptor(seatList, view.getContext(), numticket);
                     recyclerView.setAdapter(adapter);

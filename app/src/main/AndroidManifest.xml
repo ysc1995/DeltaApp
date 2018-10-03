@@ -17,18 +17,18 @@
 
         </activity>
         <activity android:name=".ui.login.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".ui.seatreserve.ecoseat.EcoSeatReserveActivity">
 
         </activity>
         <activity android:name=".ui.seatreserve.firstclassseat.FirstClassSeatReserveActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
