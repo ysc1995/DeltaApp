@@ -67,7 +67,9 @@ public class FirstClassSeatMapFragment extends Fragment {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                for (int i = 0 ; i < 14 ; i ++){
+                    seatList.get(i).setIschoosed(false);
+                }
                 int numticket = numofTicket;
                 adapter = new FirstClassSeatAdaptor(seatList, view.getContext(), numticket);
                 recyclerView.setAdapter(adapter);
