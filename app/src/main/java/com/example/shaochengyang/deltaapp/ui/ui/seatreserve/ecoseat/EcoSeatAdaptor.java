@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.seatreserve.firstclassseat;
+package com.example.shaochengyang.deltaapp.ui.ui.seatreserve.ecoseat;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,12 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.shaochengyang.deltaapp.R;
-import com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatAdaptor;
-import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
+import com.example.shaochengyang.deltaapp.ui.ui.seatreserve.model.Seat;
 
 import java.util.List;
 
-public class FirstClassSeatAdaptor extends RecyclerView.Adapter<FirstClassSeatAdaptor.MyViewHolder> {
+public class EcoSeatAdaptor extends RecyclerView.Adapter<EcoSeatAdaptor.MyViewHolder> {
 
     private static final String TAG = "CollectionListAdaptor";
 
@@ -28,7 +27,7 @@ public class FirstClassSeatAdaptor extends RecyclerView.Adapter<FirstClassSeatAd
 
 
 
-    public FirstClassSeatAdaptor(List<Seat> list, Context context, int numofTicket) {
+    public EcoSeatAdaptor(List<Seat> list, Context context, int numofTicket) {
         seatList = list;
         this.context = context;
         this.numofTicket = numofTicket;
@@ -40,9 +39,9 @@ public class FirstClassSeatAdaptor extends RecyclerView.Adapter<FirstClassSeatAd
     @Override
     //where we going to create the view holder, and set layout, etc
     //ViewGroup == xml, view == button.
-    public FirstClassSeatAdaptor.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        final View rootView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fcs_item_layout,
+        final View rootView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout,
                 parent,false);
         /*final MyViewHolder myholder = new MyViewHolder(rootView);
 
@@ -54,17 +53,17 @@ public class FirstClassSeatAdaptor extends RecyclerView.Adapter<FirstClassSeatAd
 
             }
         });*/
-        return new FirstClassSeatAdaptor.MyViewHolder(rootView);
+        return new MyViewHolder(rootView);
     }
 
     @Override
     //bind data with the holder
-    public void onBindViewHolder(@NonNull final FirstClassSeatAdaptor.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
 
         if(!seatList.get(position).isVisible()) {
             holder.img.setImageResource(R.drawable.black_img);
 
-
+           
 
         }
         else{

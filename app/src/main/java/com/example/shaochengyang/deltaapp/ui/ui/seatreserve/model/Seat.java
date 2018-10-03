@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.seatreserve.model;
+package com.example.shaochengyang.deltaapp.ui.ui.seatreserve.model;
 
 import com.example.shaochengyang.deltaapp.R;
 

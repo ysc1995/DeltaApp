@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.bookflight;
+package com.example.shaochengyang.deltaapp.ui.ui.bookflight;
 
 
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shaochengyang.deltaapp.R;
+import com.example.shaochengyang.deltaapp.ui.ui.bookflight.PagerBookFlight;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

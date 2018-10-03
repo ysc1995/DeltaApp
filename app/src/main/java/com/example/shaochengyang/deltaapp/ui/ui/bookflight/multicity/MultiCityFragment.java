@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.bookflight;
+package com.example.shaochengyang.deltaapp.ui.ui.bookflight.multicity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,12 +10,11 @@ import android.view.ViewGroup;
 
 import com.example.shaochengyang.deltaapp.R;
 
-public class OneWayFragment extends Fragment {
-
+public class MultiCityFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_one_way, container, false);
+        View view = inflater.inflate(R.layout.frag_multi_city, container, false);
 
         return view;
     }
