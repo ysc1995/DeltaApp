@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // App code
+                //
                 AccessToken accessToken = loginResult.getAccessToken();
                 Log.d(TAG, "onSuccess: "+accessToken.getToken());
                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
