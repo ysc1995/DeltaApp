@@ -2,8 +2,8 @@
     <string name="app_name">DeltaApp</string>
 
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
-    <string name="facebook_app_id">1896134040471061</string>
-    <string name="fb_login_protocol_scheme">fb1896134040471061</string>
+    <string name="facebook_application_id" translatable="false">736714640021560</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb736714640021560</string>
 
     <!--Book A Flight-->
     <string name="bf_tableft">ROUND-TRIP</string>
@@ -61,5 +61,6 @@
     <string name="more_logout">Log Out</string>
     <string name="more_airport_map">Airport Map</string>
     <string name="title_activity_maps">Map</string>
+    <string name="more_seat">Seat Select</string>
 
 </resources>

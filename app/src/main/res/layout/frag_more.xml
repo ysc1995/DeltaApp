@@ -59,4 +59,13 @@
         android:text="@string/more_airport_map"
         android:textColor="@android:color/background_light"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_more_seat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="@string/more_seat"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
 </LinearLayout>
