@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.shaochengyang.deltaapp.ui.bookflight.BookFlightFragment;
 import com.example.shaochengyang.deltaapp.ui.findtrip.FindTripFragment;
+import com.example.shaochengyang.deltaapp.ui.more.MoreFragment;
 
 public class PagerMain extends FragmentStatePagerAdapter {
 
@@ -34,10 +35,10 @@ public class PagerMain extends FragmentStatePagerAdapter {
                 //FindTripFragment tab3 = new FindTripFragment();
                 return tab3;
             case 3:
-                BookFlightFragment tab4 = new BookFlightFragment();
+                FindTripFragment tab4 = new FindTripFragment();
                 return tab4;
             case 4:
-                BookFlightFragment tab5 = new BookFlightFragment();
+                MoreFragment tab5 = new MoreFragment();
                 return tab5;
             default:
                 return null;
