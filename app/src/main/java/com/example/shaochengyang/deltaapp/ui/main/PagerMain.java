@@ -21,7 +21,6 @@ public class PagerMain extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         //Returning the current tabs
-
         switch (position) {
             case 0:
                 FindTripFragment tab1 = new FindTripFragment();
