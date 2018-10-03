@@ -21,6 +21,7 @@ public class BookFlightFragment extends Fragment {
 
     @BindView(R.id.pager_bookflight)
     ViewPager pagerBookflight;
+
     Unbinder unbinder;
     @BindView(R.id.menu_bf_top)
     TabLayout menuBfTop;
@@ -30,13 +31,16 @@ public class BookFlightFragment extends Fragment {
         View view = inflater.inflate(R.layout.frag_book_flight, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        PagerBookFlight pagerBookFlight = new PagerBookFlight(getFragmentManager(), menuBfTop.getTabCount());
+        PagerBookFlight pagerBookFlight = new PagerBookFlight(getActivity().getSupportFragmentManager(),
+                menuBfTop.getTabCount());
 
         pagerBookflight.setAdapter(pagerBookFlight);
 
         menuBfTop.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
                 pagerBookflight.setCurrentItem(tab.getPosition());
 
             }

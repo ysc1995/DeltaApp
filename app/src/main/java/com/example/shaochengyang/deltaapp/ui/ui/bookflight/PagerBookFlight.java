@@ -27,11 +27,14 @@ public class PagerBookFlight extends FragmentStatePagerAdapter {
 
             case 1:
                 OneWayFragment tab2 = new OneWayFragment();
+
                 return tab2;
+
             case 2:
                 MultiCityFragment tab3 = new MultiCityFragment();
                 //FindTripFragment tab3 = new FindTripFragment();
                 return tab3;
+
             default:
                 return null;
         }
