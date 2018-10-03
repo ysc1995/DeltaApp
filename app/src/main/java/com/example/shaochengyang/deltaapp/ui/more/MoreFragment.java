@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.login.LoginActivity;
+import com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatReserveActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +26,18 @@ public class MoreFragment extends Fragment {
     @BindView(R.id.tv_more_logout)
     TextView tvMoreLogout;
     Unbinder unbinder;
+    @BindView(R.id.tv_more_profile)
+    TextView tvMoreProfile;
+    @BindView(R.id.tv_more_fstatus)
+    TextView tvMoreFstatus;
+    @BindView(R.id.tv_more_trackbags)
+    TextView tvMoreTrackbags;
+    @BindView(R.id.tv_more_skyclub)
+    TextView tvMoreSkyclub;
+    @BindView(R.id.tv_more_fstatus2)
+    TextView tvMoreFstatus2;
+    @BindView(R.id.tv_more_seat)
+    TextView tvMoreSeat;
 
     @Nullable
     @Override
@@ -45,6 +58,14 @@ public class MoreFragment extends Fragment {
                                 startActivity(intent);
                             }
                         });
+            }
+        });
+
+        tvMoreSeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EcoSeatReserveActivity.class);
+                startActivity(intent);
             }
         });
 
