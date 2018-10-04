@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.shaochengyang.deltaapp.R;
-import com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatAdaptor;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
 
 import java.util.List;
