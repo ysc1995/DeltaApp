@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.ui.bookflight.oneway;
+package com.example.shaochengyang.deltaapp.ui.bookflight.oneway;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -48,6 +48,14 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView {
 
         oneWayFragmentPresenter = new OneWayFragmentPresenter(this);
 
+        String num = txtBfNums.getText().toString();
+        int numberOfTicket = Integer.parseInt(num);
+        if(numberOfTicket<2){
+            btnBfMinus.setClickable(false);
+        }
+        if(numberOfTicket>5){
+            btnBfPlus.setClickable(false);
+        }
         return view;
     }
 
@@ -61,15 +69,47 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_bf_minus:
-                oneWayFragmentPresenter.minusOneTickey();
+                oneWayFragmentPresenter.minusOneTicket();
                 break;
             case R.id.btn_bf_plus:
+                oneWayFragmentPresenter.plusOneTicket();
                 break;
         }
     }
 
     @Override
-    public void minusOneTickey() {
+    public void minusOneTicket() {
+        String num = txtBfNums.getText().toString();
+        btnBfPlus.setClickable(true);
+        int numberOfTicket = Integer.parseInt(num);
+        if(numberOfTicket<2){
+            btnBfMinus.setClickable(false);
+        }
+        else {
+            numberOfTicket--;
+        }
+        txtBfNums.setText(String.valueOf(numberOfTicket));
+        if(numberOfTicket==1){
+            btnBfMinus.setClickable(false);
+        }
+    }
 
+    @Override
+    public void plusOneTicket() {
+        String num = txtBfNums.getText().toString();
+        btnBfMinus.setClickable(true);
+        int numberOfTicket = Integer.parseInt(num);
+
+        if(numberOfTicket<6){
+            numberOfTicket++;
+            txtBfNums.setText(String.valueOf(numberOfTicket));
+        }
+        else{
+            btnBfPlus.setClickable(false);
+        }
+
+        if(numberOfTicket==6){
+            btnBfPlus.setClickable(false);
+        }
     }
 }

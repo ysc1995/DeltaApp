@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.ui.main;
+package com.example.shaochengyang.deltaapp.ui.main;
 
 
 import android.os.Bundle;

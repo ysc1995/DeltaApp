@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.ui.seatreserve.firstclassseat;
+package com.example.shaochengyang.deltaapp.ui.seatreserve.firstclassseat;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.shaochengyang.deltaapp.R;
-import com.example.shaochengyang.deltaapp.ui.ui.seatreserve.model.Seat;
+import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
 
 import java.util.List;
 

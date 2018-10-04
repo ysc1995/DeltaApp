@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_bf_title1" />
 
     <Button
-        android:id="@+id/btn_bf_minus"
+        android:id="@+id/btn_bf_plus"
         android:layout_width="42dp"
         android:layout_height="52dp"
         android:text="@string/bf_plus"
@@ -83,7 +83,7 @@
         app:layout_constraintStart_toEndOf="@+id/txt_bf_nums" />
 
     <Button
-        android:id="@+id/btn_bf_plus"
+        android:id="@+id/btn_bf_minus"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:text="@string/bf_minus"

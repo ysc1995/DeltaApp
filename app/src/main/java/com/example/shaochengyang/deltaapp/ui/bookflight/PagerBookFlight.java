@@ -1,12 +1,13 @@
-package com.example.shaochengyang.deltaapp.ui.ui.bookflight;
+package com.example.shaochengyang.deltaapp.ui.bookflight;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.shaochengyang.deltaapp.ui.ui.bookflight.multicity.MultiCityFragment;
-import com.example.shaochengyang.deltaapp.ui.ui.bookflight.oneway.OneWayFragment;
-import com.example.shaochengyang.deltaapp.ui.ui.bookflight.roundtrip.RoundTripFragment;
+import com.example.shaochengyang.deltaapp.ui.bookflight.multicity.MultiCityFragment;
+import com.example.shaochengyang.deltaapp.ui.bookflight.oneway.OneWayFragment;
+import com.example.shaochengyang.deltaapp.ui.bookflight.roundtrip.RoundTripFragment;
+
 
 public class PagerBookFlight extends FragmentStatePagerAdapter {
 

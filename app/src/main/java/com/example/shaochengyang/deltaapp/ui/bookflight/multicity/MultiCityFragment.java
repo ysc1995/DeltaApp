@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.ui.bookflight.multicity;
+package com.example.shaochengyang.deltaapp.ui.bookflight.multicity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

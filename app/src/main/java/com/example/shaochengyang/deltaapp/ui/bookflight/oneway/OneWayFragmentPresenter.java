@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.ui.bookflight.oneway;
+package com.example.shaochengyang.deltaapp.ui.bookflight.oneway;
 
 public class OneWayFragmentPresenter implements IOneWayFragmentPresenter {
     IOneWayFragmentView iOneWayFragmentView;
@@ -8,7 +8,12 @@ public class OneWayFragmentPresenter implements IOneWayFragmentPresenter {
     }
 
     @Override
-    public void minusOneTickey() {
-        iOneWayFragmentView.minusOneTickey();
+    public void minusOneTicket() {
+        iOneWayFragmentView.minusOneTicket();
+    }
+
+    @Override
+    public void plusOneTicket() {
+        iOneWayFragmentView.plusOneTicket();
     }
 }

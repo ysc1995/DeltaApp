@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ui.seatreserve.firstclassseat.FirstClassSeatReserveActivity"
+    tools:context=".ui.seatreserve.firstclassseat.FirstClassSeatReserveActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <fragment
         android:id="@+id/fragment2"
-        android:name="com.example.shaochengyang.deltaapp.ui.ui.seatreserve.firstclassseat.FirstClassSeatMapFragment"
+        android:name="com.example.shaochengyang.deltaapp.ui.seatreserve.firstclassseat.FirstClassSeatMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
