@@ -1,5 +1,6 @@
 package com.example.shaochengyang.deltaapp.ui.bookflight.oneway;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -50,10 +51,10 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView {
 
         String num = txtBfNums.getText().toString();
         int numberOfTicket = Integer.parseInt(num);
-        if(numberOfTicket<2){
+        if (numberOfTicket < 2) {
             btnBfMinus.setClickable(false);
         }
-        if(numberOfTicket>5){
+        if (numberOfTicket > 5) {
             btnBfPlus.setClickable(false);
         }
         return view;
@@ -65,7 +66,8 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.btn_bf_minus, R.id.btn_bf_plus})
+    @SuppressLint("ResourceAsColor")
+    @OnClick({R.id.btn_bf_minus, R.id.btn_bf_plus,R.id.tv_bf_miles, R.id.tv_bf_money})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_bf_minus:
@@ -73,6 +75,14 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView {
                 break;
             case R.id.btn_bf_plus:
                 oneWayFragmentPresenter.plusOneTicket();
+                break;
+            case R.id.tv_bf_miles:
+                tvBfMoney.setClickable(false);
+                
+                break;
+            case R.id.tv_bf_money:
+                tvBfMiles.setClickable(false);
+
                 break;
         }
     }
@@ -82,14 +92,13 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView {
         String num = txtBfNums.getText().toString();
         btnBfPlus.setClickable(true);
         int numberOfTicket = Integer.parseInt(num);
-        if(numberOfTicket<2){
+        if (numberOfTicket < 2) {
             btnBfMinus.setClickable(false);
-        }
-        else {
+        } else {
             numberOfTicket--;
         }
         txtBfNums.setText(String.valueOf(numberOfTicket));
-        if(numberOfTicket==1){
+        if (numberOfTicket == 1) {
             btnBfMinus.setClickable(false);
         }
     }
@@ -100,16 +109,17 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView {
         btnBfMinus.setClickable(true);
         int numberOfTicket = Integer.parseInt(num);
 
-        if(numberOfTicket<6){
+        if (numberOfTicket < 6) {
             numberOfTicket++;
             txtBfNums.setText(String.valueOf(numberOfTicket));
-        }
-        else{
+        } else {
             btnBfPlus.setClickable(false);
         }
 
-        if(numberOfTicket==6){
+        if (numberOfTicket == 6) {
             btnBfPlus.setClickable(false);
         }
     }
+
+
 }
