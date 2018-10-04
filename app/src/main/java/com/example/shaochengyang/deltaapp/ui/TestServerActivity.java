@@ -7,7 +7,8 @@ import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.DataManager;
 import com.example.shaochengyang.deltaapp.ui.data.IDataManager;
 
-public class TestServerActivity extends AppCompatActivity implements IDataManager.onSeatInformationListener {
+public class TestServerActivity extends AppCompatActivity implements IDataManager.onSeatInformationListener,
+ IDataManager.onCityInformationListener, IDataManager.onRouteIdListener, IDataManager.onBusInformationListener{
 
     IDataManager iDataManager;
     @Override
@@ -17,6 +18,10 @@ public class TestServerActivity extends AppCompatActivity implements IDataManage
 
         iDataManager = new DataManager(this);
 
-        iDataManager.getSeatInformation(this);
+        //iDataManager.getSeatInformation(this);
+        //iDataManager.getCityInformation(this);
+        //iDataManager.getRouteId(this);
+        iDataManager.getBusInformation(this);
+
     }
 }

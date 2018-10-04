@@ -8,5 +8,17 @@ public interface IDataManager extends INetworkHelper {
 
     }
 
+    interface onCityInformationListener{
+
+    }
+
+    interface onRouteIdListener{
+
+    }
+
+    interface onBusInformationListener{
+
+    }
+
 
 }

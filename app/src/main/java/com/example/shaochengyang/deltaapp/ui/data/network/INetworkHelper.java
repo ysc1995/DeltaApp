@@ -6,4 +6,10 @@ public interface INetworkHelper {
 
     void getSeatInformation(IDataManager.onSeatInformationListener listener);
 
+    void getCityInformation(IDataManager.onCityInformationListener listener);
+
+    void getRouteId(IDataManager.onRouteIdListener listener);
+
+    void getBusInformation(IDataManager.onBusInformationListener listener);
+
 }

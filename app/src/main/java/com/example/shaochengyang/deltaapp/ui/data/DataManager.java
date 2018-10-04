@@ -21,5 +21,20 @@ public class DataManager implements IDataManager {
         iNetworkHelper.getSeatInformation(listener);
     }
 
+    @Override
+    public void getCityInformation(onCityInformationListener listener) {
+        iNetworkHelper.getCityInformation(listener);
+    }
+
+    @Override
+    public void getRouteId(onRouteIdListener listener) {
+        iNetworkHelper.getRouteId(listener);
+    }
+
+    @Override
+    public void getBusInformation(onBusInformationListener listener) {
+        iNetworkHelper.getBusInformation(listener);
+    }
+
 
 }
