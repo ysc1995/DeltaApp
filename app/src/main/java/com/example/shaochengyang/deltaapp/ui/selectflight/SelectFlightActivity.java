@@ -55,6 +55,7 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
         String rdestination = getIntent().getExtras().getString("rdestination");
 
         //Toast.makeText(this, ""+rname, Toast.LENGTH_SHORT).show();
+        //int fid = Integer.parseInt(rid);
 
         iSelectFlightPresenter = new SelectFlightPresenter(this);
         iSelectFlightPresenter.onActivityCreate();
@@ -94,5 +95,6 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
             }
         });
         rvFlightList.setAdapter(adapter);
+
     }
 }

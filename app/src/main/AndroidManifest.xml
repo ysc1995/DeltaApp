@@ -9,6 +9,12 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality. 
     -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
     <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
     <application
         android:allowBackup="true"
@@ -24,13 +30,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.authentication.login.LoginActivity"></activity>
+        <activity android:name=".ui.authentication.login.LoginActivity">
+
+        </activity>
         <activity android:name=".ui.seatreserve.ecoseat.EcoSeatReserveActivity" />
         <activity android:name=".ui.seatreserve.firstclassseat.FirstClassSeatReserveActivity" />
         <activity android:name=".ui.ChartActivity" />
-        <activity android:name=".ui.selectflight.SelectFlightActivity" />
-        <activity android:name=".ui.displayflight.FlightDetailActivity" />
-        <activity android:name=".ui.flightconfirmation.ConfirmationPageActivity"></activity>
+        <activity android:name=".ui.selectflight.SelectFlightActivity">
+
+        </activity>>
+        <activity android:name=".ui.displayflight.FlightDetailActivity">
+
+        </activity>
+        <activity android:name=".ui.flightconfirmation.ConfirmationPageActivity">
+
+        </activity>
+
     </application>
 
 </manifest>
