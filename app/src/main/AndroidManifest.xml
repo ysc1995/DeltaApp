@@ -18,19 +18,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.main.MainActivity">
-
-        </activity>
-        <activity android:name=".ui.authentication.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.authentication.login.LoginActivity"></activity>
         <activity android:name=".ui.seatreserve.ecoseat.EcoSeatReserveActivity" />
         <activity android:name=".ui.seatreserve.firstclassseat.FirstClassSeatReserveActivity" />
-        <activity android:name=".ui.ChartActivity"></activity>
-        <activity android:name=".ui.selectflight.SelectFlightActivity"></activity>
+        <activity android:name=".ui.ChartActivity" />
+        <activity android:name=".ui.selectflight.SelectFlightActivity" />
+        <activity android:name=".ui.displayflight.FlightDetailActivity" />
+        <activity android:name=".ui.flightconfirmation.ConfirmationPageActivity"></activity>
     </application>
 
 </manifest>

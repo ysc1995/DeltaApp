@@ -70,4 +70,11 @@
     <!--<string name="title_activity_maps">Map</string>-->
     <string name="more_seat">Seat Select</string>
 
+    <!--Display Flight Details $ confirmation page -->
+    <string name="fd_price_title">Total Price (All Fights)</string>
+    <string name="fd_pay">Pay</string>
+    <string name="fd_title">Flight Details</string>
+    <string name="fc_title">Flight Confirmation</string>
+    <string name="fc_select_seat">Select Seat</string>
+
 </resources>

@@ -8,6 +8,8 @@
     <color name="colorMainBackground">#0a3fa9</color>
     <color name="colorTabText">#c5c9d2</color>
 
+    <color name="colorButton">#df2a42</color>
+
 
 
 </resources>

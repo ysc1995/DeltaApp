@@ -1,5 +1,6 @@
 package com.example.shaochengyang.deltaapp.ui.selectflight;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusinformationItem;
+import com.example.shaochengyang.deltaapp.ui.displayflight.FlightDetailActivity;
 
 import java.util.List;
 
@@ -79,6 +81,9 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
             @Override
             public void onItemClick(BusinformationItem bus) {
                 Toast.makeText(SelectFlightActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SelectFlightActivity.this, FlightDetailActivity.class);
+                intent.putExtra("flight_detail", bus);
+                startActivity(intent);
             }
         });
         rvFlightList.setAdapter(adapter);

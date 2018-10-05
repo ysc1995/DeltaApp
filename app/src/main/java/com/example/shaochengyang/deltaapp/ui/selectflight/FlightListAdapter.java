@@ -20,7 +20,7 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.My
 
 
     public interface OnItemClickListener {
-        void onItemClick(BusinformationItem orderHistory);
+        void onItemClick(BusinformationItem bus);
     }
 
     private List<BusinformationItem> businformationItemList;
@@ -47,6 +47,7 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.price.setText(businformationItemList.get(position).getFare());
+        holder.bind(businformationItemList.get(position), listener);
     }
 
     @Override
