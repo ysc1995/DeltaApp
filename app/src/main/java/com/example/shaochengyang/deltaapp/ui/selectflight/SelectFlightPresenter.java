@@ -20,11 +20,9 @@ public class SelectFlightPresenter implements ISelectFlightPresenter, IDataManag
     }
 
     @Override
-    public void onActivityCreate() {
-        iDataManager.getBusInformation(this);
+    public void onActivityCreate(int rid) {
+        iDataManager.getBusInformation(this, rid);
     }
-
-
 
     @Override
     public void bindFlightListToView(BusInformation busInformation) {
@@ -34,4 +32,6 @@ public class SelectFlightPresenter implements ISelectFlightPresenter, IDataManag
         busList.add(bus);
         iSelectFlightView.showFlightList(busList);
     }
+
+
 }

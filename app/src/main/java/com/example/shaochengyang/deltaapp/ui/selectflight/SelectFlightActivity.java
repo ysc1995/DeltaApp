@@ -23,14 +23,12 @@ import butterknife.OnClick;
 
 public class SelectFlightActivity extends AppCompatActivity implements ISelectFlightView {
 
+    private static final String TAG = "SelectFlightActivity";
+
     @BindView(R.id.tv_sf_title)
     TextView tvSfTitle;
     @BindView(R.id.tv_sf_date)
     TextView tvSfDate;
-    @BindView(R.id.tv_sf_discription)
-    TextView tvSfDiscription;
-    @BindView(R.id.textView5)
-    TextView textView5;
     @BindView(R.id.tv_sf_money)
     TextView tvSfMoney;
     @BindView(R.id.tv_sf_main_cabin)
@@ -49,17 +47,22 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
         setContentView(R.layout.activity_select_flight);
         ButterKnife.bind(this);
 
+
         String rid = getIntent().getExtras().getString("rid");
         String rname = getIntent().getExtras().getString("rname");
         String rstart = getIntent().getExtras().getString("rstart");
         String rdestination = getIntent().getExtras().getString("rdestination");
 
         //Toast.makeText(this, ""+rname, Toast.LENGTH_SHORT).show();
-        //int fid = Integer.parseInt(rid);
+        Log.d(TAG, "onCreate: " + rid + "\nrname: " + rname + "\nrstart" + rstart
+        + "\nrdestination: " + rdestination);
+
+        tvSfTitle.setText("Select Flight:\n" + rstart + " -> " + rdestination);
+
+        int routeId = Integer.parseInt(rid);
 
         iSelectFlightPresenter = new SelectFlightPresenter(this);
-        iSelectFlightPresenter.onActivityCreate();
-
+        iSelectFlightPresenter.onActivityCreate(routeId);
 
     }
 

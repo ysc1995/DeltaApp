@@ -46,7 +46,7 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.price.setText(businformationItemList.get(position).getFare());
+        holder.price.setText("$" + businformationItemList.get(position).getFare());
         holder.bind(businformationItemList.get(position), listener);
     }
 

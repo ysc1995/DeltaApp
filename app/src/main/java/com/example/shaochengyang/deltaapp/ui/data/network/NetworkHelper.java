@@ -71,10 +71,9 @@ public class NetworkHelper implements INetworkHelper{
     }
 
 
-
     @Override
-    public void getBusInformation(final IDataManager.onBusInformationListener listener) {
-        Call<BusInformation> call = apiService.getBusInformation(2);
+    public void getBusInformation(final IDataManager.onBusInformationListener listener, int rid) {
+        Call<BusInformation> call = apiService.getBusInformation(rid);
         call.enqueue(new Callback<BusInformation>() {
             @Override
             public void onResponse(Call<BusInformation> call, Response<BusInformation> response) {

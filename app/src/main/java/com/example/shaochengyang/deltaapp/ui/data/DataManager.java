@@ -38,8 +38,8 @@ public class DataManager implements IDataManager {
     }*/
 
     @Override
-    public void getBusInformation(onBusInformationListener listener) {
-        iNetworkHelper.getBusInformation(listener);
+    public void getBusInformation(onBusInformationListener listener, int rid) {
+        iNetworkHelper.getBusInformation(listener, rid);
     }
 
     @Override
