@@ -18,8 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shaochengyang.deltaapp.R;
+import com.example.shaochengyang.deltaapp.ui.compare.CompareActivity;
 import com.example.shaochengyang.deltaapp.ui.data.DataManager;
 import com.example.shaochengyang.deltaapp.ui.data.IDataManager;
+import com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.model.DemoItem;
 import com.example.shaochengyang.deltaapp.ui.data.network.model.RItem;
 import com.example.shaochengyang.deltaapp.ui.selectflight.SelectFlightActivity;
 
@@ -30,7 +32,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDataManager.onCityInformationListener, IDataManager.onRouteIdListener,IDataManager.onDatabaseListener {
+public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDataManager.onDemoListener, IDataManager.onCityInformationListener, IDataManager.onRouteIdListener,IDataManager.onDatabaseListener {
 
     private static final String TAG = "OneWayFragment";
     @BindView(R.id.btn_bf_minus)
@@ -116,7 +118,6 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
                 break;
             case R.id.tv_bf_find:
 
-
                 Boolean checkFlag = true;
                 String fromCity = txtBfFrom.getText().toString();
                 String toCity = txtBfTo.getText().toString();
@@ -162,6 +163,14 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
                     Toast.makeText(getActivity(), "Please Type Valid Destination City", Toast.LENGTH_SHORT).show();
                     checkFlag = false;
                 }
+
+
+                if(checkFlag&&fromCity.equals("St. Charles, IL")&&toCity.equals("New York City, NY")){
+                    iDataManager.getCompareDemo(this);
+
+                    break;
+                }
+
 
                 if(checkFlag){
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -242,6 +251,13 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
         intent.putExtra("numofTicket",numofTicket);
 
         startActivity(intent);
+    }
+
+    @Override
+    public void passDemoInfo(List<DemoItem> demoItemList) {
+        //TODO add demoItem to intent
+        Intent i = new Intent(getActivity(), CompareActivity.class);
+        startActivity(i);
     }
 
    /* @Override

@@ -51,16 +51,6 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
 
 
         String rid = getIntent().getExtras().getString("rid");
-        String rname = getIntent().getExtras().getString("rname");
-        String rstart = getIntent().getExtras().getString("rstart");
-        String rdestination = getIntent().getExtras().getString("rdestination");
-
-
-        //Toast.makeText(this, ""+rname, Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onCreate: " + rid + "\nrname: " + rname + "\nrstart" + rstart
-        + "\nrdestination: " + rdestination);
-
-        tvSfTitle.setText("Select Flight:\n" + rstart + " -> " + rdestination);
 
         int routeId = Integer.parseInt(rid);
 
@@ -85,6 +75,16 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
 
     @Override
     public void showFlightList(List<BusinformationItem> flightList) {
+        String rname = getIntent().getExtras().getString("rname");
+        final String rstart = getIntent().getExtras().getString("rstart");
+        final String rdestination = getIntent().getExtras().getString("rdestination");
+
+        //Toast.makeText(this, ""+rname, Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onCreate: " + "\nrname: " + rname + "\nrstart" + rstart
+                + "\nrdestination: " + rdestination);
+
+        tvSfTitle.setText("Select Flight:\n" + rstart + " -> " + rdestination);
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvFlightList.setLayoutManager(layoutManager);
         rvFlightList.setItemAnimator(new DefaultItemAnimator());
@@ -97,10 +97,12 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
                 Toast.makeText(SelectFlightActivity.this, "clicked", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SelectFlightActivity.this, FlightDetailActivity.class);
                 intent.putExtra("flight_detail", bus);
+                intent.putExtra("rstart", rstart);
+                intent.putExtra("rdestination", rdestination);
                 intent.putExtra("numofTicket",numofTicket);
                 startActivity(intent);
             }
-        });
+        }, rstart, rdestination);
         rvFlightList.setAdapter(adapter);
 
     }

@@ -47,6 +47,11 @@ public class DataManager implements IDataManager {
         iNetworkHelper.getRouteId(onRouteIdListener,fromCityLati,fromCityLati1,toCityLati,toCityLong);
     }
 
+    @Override
+    public void getCompareDemo(onDemoListener onDemoListener) {
+        iNetworkHelper.getCompareDemo(onDemoListener);
+    }
+
 
     @Override
     public void addRow(onDatabaseListener onDatabaseListener, String cityName, String cityLati, String cityLong) {
