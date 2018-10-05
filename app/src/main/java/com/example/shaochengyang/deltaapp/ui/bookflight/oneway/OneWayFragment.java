@@ -122,7 +122,7 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
                 String toCity = txtBfTo.getText().toString();
                 if(fromCity.contains("Charles")){
                     fromCity = "St. Charles, IL";
-                }else if(fromCity.contains("New York")){
+                }else if(fromCity.contains("New York")||fromCity.contains("NY")){
                     fromCity = "New York City, NY";
                 }else if(fromCity.contains("Dallas")){
                     fromCity = "Dallas, TX";
@@ -144,7 +144,7 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
 
                 if(toCity.contains("Charles")){
                     toCity = "St. Charles, IL";
-                }else if(toCity.contains("New York")){
+                }else if(toCity.contains("New York")||toCity.contains("NY")){
                     toCity = "New York City, NY";
                 }else if(toCity.contains("Dallas")){
                     toCity = "Dallas, TX";
@@ -229,6 +229,7 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
 
     @Override
     public void passRouteInfo(List<RItem> rItemList) {
+        String numofTicket = txtBfNums.getText().toString();
         Intent intent = new Intent(getActivity(), SelectFlightActivity.class);
         String rid = rItemList.get(0).getRid();
         String rname = rItemList.get(0).getRname();
@@ -238,6 +239,7 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
         intent.putExtra("rname",rname);
         intent.putExtra("rstart",rstart);
         intent.putExtra("rdestination",rdestination);
+        intent.putExtra("numofTicket",numofTicket);
 
         startActivity(intent);
     }
