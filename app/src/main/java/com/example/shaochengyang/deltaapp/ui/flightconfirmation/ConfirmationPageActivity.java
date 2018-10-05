@@ -35,6 +35,7 @@ public class ConfirmationPageActivity extends AppCompatActivity {
     @BindView(R.id.tv_fc_price)
     TextView tvFcPrice;
 
+    String numofTicket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,8 @@ public class ConfirmationPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_confirmation_page);
         ButterKnife.bind(this);
 
+
+        numofTicket = getIntent().getExtras().getString("numofTicket");
     }
 
     private void showFlightOnScreen() {
@@ -57,7 +60,9 @@ public class ConfirmationPageActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_fc_select_seat)
     public void onViewClicked() {
+        numofTicket = getIntent().getExtras().getString("numofTicket");
         Intent intent = new Intent(this, EcoSeatReserveActivity.class);
+        intent.putExtra("numofTicket",numofTicket);
         startActivity(intent);
     }
 }
