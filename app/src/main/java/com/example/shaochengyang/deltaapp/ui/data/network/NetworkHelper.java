@@ -81,6 +81,7 @@ public class NetworkHelper implements INetworkHelper{
                 Log.d(TAG, "onResponse: " + response.body().toString());
                 BusInformation busInformation = response.body();
                 Log.d(TAG, "onResponse: " + busInformation.toString());
+
             }
 
             @Override
