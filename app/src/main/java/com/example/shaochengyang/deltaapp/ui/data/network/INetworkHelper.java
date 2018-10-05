@@ -14,4 +14,6 @@ public interface INetworkHelper {
     void getBusInformation(IDataManager.onBusInformationListener listener, int rid);
 
     void getRouteId(IDataManager.onRouteIdListener onRouteIdListener, String fromCityLati, String fromCityLati1, String toCityLati, String toCityLong);
+
+    void getCompareDemo(IDataManager.onDemoListener onDemoListener);
 }
