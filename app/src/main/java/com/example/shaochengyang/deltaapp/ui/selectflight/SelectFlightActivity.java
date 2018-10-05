@@ -49,6 +49,13 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
         setContentView(R.layout.activity_select_flight);
         ButterKnife.bind(this);
 
+        String rid = getIntent().getExtras().getString("rid");
+        String rname = getIntent().getExtras().getString("rname");
+        String rstart = getIntent().getExtras().getString("rstart");
+        String rdestination = getIntent().getExtras().getString("rdestination");
+
+        //Toast.makeText(this, ""+rname, Toast.LENGTH_SHORT).show();
+
         iSelectFlightPresenter = new SelectFlightPresenter(this);
         iSelectFlightPresenter.onActivityCreate();
 
