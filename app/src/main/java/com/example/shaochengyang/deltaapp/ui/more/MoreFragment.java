@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.shaochengyang.deltaapp.R;
-import com.example.shaochengyang.deltaapp.ui.login.LoginActivity;
+import com.example.shaochengyang.deltaapp.ui.authentication.login.LoginActivity;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatReserveActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;

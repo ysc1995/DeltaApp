@@ -14,6 +14,7 @@
     <string name="bf_to">To</string>
     <string name="bf_dates">Dates</string>
     <string name="bf_passengers">PASSENGERS</string>
+    <string name="bf_numofticket">1</string>
     <string name="bf_showpricein">SHOW PRICE IN</string>
     <string name="bf_money">Money</string>
     <string name="bf_miles">Miles</string>
@@ -40,6 +41,11 @@
     <!--show flights-->
     <string name="sf_show_price_in">SHOW PRICE IN</string>
     <string name="sf_price">PRICE</string>
+    <string name="sf_discription">Fares listed are one-way passenger, including taxes and fees.
+        Additional baggage fees may apply. "Best Match" may list Delta operated flights first.</string>
+    <string name="sf_money">USD</string>
+    <string name="sf_main_cabin">MAIN</string>
+    <string name="sf_first_cabin">FIRST</string>
 
     <!--eco seat-->
     <string name="es_title">MAIN CABIN</string>

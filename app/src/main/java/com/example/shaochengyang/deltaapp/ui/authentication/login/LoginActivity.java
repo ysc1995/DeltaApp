@@ -1,4 +1,4 @@
-package com.example.shaochengyang.deltaapp.ui.login;
+package com.example.shaochengyang.deltaapp.ui.authentication.login;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;

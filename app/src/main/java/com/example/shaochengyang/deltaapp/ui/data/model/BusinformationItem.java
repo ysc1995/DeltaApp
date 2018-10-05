@@ -3,6 +3,7 @@ package com.example.shaochengyang.deltaapp.ui.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
+
 public class BusinformationItem{
 
 	@SerializedName("busid")

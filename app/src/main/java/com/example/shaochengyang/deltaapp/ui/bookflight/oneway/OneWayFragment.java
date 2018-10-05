@@ -1,6 +1,7 @@
 package com.example.shaochengyang.deltaapp.ui.bookflight.oneway;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.shaochengyang.deltaapp.R;
+import com.example.shaochengyang.deltaapp.ui.selectflight.SelectFlightActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,7 +53,7 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView {
 
         String num = txtBfNums.getText().toString();
         int numberOfTicket = Integer.parseInt(num);
-        if (numberOfTicket < 2) {
+        if (numberOfTicket <= 1) {
             btnBfMinus.setClickable(false);
         }
         if (numberOfTicket > 5) {
@@ -67,7 +69,7 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView {
     }
 
     @SuppressLint("ResourceAsColor")
-    @OnClick({R.id.btn_bf_minus, R.id.btn_bf_plus,R.id.tv_bf_miles, R.id.tv_bf_money})
+    @OnClick({R.id.btn_bf_minus, R.id.btn_bf_plus,R.id.tv_bf_miles, R.id.tv_bf_money, R.id.tv_bf_find})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_bf_minus:
@@ -84,6 +86,10 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView {
                 tvBfMiles.setClickable(false);
 
                 break;
+            case R.id.tv_bf_find:
+                Intent intent = new Intent(getActivity(), SelectFlightActivity.class);
+                startActivity(intent);
+
         }
     }
 
