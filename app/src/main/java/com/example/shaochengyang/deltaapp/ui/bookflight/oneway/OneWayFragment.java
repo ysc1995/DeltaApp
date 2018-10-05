@@ -118,7 +118,6 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
                 break;
             case R.id.tv_bf_find:
 
-
                 Boolean checkFlag = true;
                 String fromCity = txtBfFrom.getText().toString();
                 String toCity = txtBfTo.getText().toString();

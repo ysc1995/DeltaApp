@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 
 public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.MyViewHolder> {
 
+    String depart_airport, arrive_airport;
 
     public interface OnItemClickListener {
         void onItemClick(BusinformationItem bus);
@@ -26,9 +27,12 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.My
     private List<BusinformationItem> businformationItemList;
     private OnItemClickListener listener;
 
-    public FlightListAdapter(List<BusinformationItem> list, OnItemClickListener listener) {
+    public FlightListAdapter(List<BusinformationItem> list, OnItemClickListener listener,
+                             String depart_airport, String arrive_airport) {
         businformationItemList = list;
         this.listener = listener;
+        this.depart_airport = depart_airport;
+        this.arrive_airport = arrive_airport;
     }
 
 
@@ -47,6 +51,11 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.price.setText("$" + businformationItemList.get(position).getFare());
+        holder.duration.setText(businformationItemList.get(position).getBoardingtime() + " > " +
+                businformationItemList.get(position).getDropingtime());
+        holder.route_duration.setText(depart_airport + " > " + arrive_airport +
+        "/" + "\nduration: " + businformationItemList.get(position).getJournyduration());
+
         holder.bind(businformationItemList.get(position), listener);
     }
 
@@ -60,11 +69,13 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.My
     //holding the item and the view.
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView price;
+        TextView price, duration, route_duration;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             price = itemView.findViewById(R.id.tv_sf_price);
+            duration = itemView.findViewById(R.id.tv_sf_duarion);
+            route_duration = itemView.findViewById(R.id.tv_sf_route);
         }
 
         public void bind(final BusinformationItem bus, final OnItemClickListener listener) {

@@ -18,7 +18,7 @@ public class FlightDetailActivity extends AppCompatActivity implements IFlightDe
 
     IFlightDetailPresenter iFlightDetailPresenter;
     BusinformationItem flight;
-
+    String numofTicket;
 
     @BindView(R.id.tv_fd_flightno)
     TextView tvFdFlightno;
@@ -36,8 +36,9 @@ public class FlightDetailActivity extends AppCompatActivity implements IFlightDe
     TextView tvFdDuration;
     @BindView(R.id.tv_fd_price)
     TextView tvFdPrice;
+    @BindView(R.id.tv_fd_tickets)
+    TextView tvFdTickets;
 
-    String numofTicket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +54,24 @@ public class FlightDetailActivity extends AppCompatActivity implements IFlightDe
 
     private void showFlightOnScreen() {
         flight = getIntent().getExtras().getParcelable("flight_detail");
-        tvFdFlightno.setText(flight.getBusregistrationno());
-        tvFdCabin.setText(flight.getBustype());
+        final String rstart = getIntent().getExtras().getString("rstart");
+        final String rdestination = getIntent().getExtras().getString("rdestination");
+        String tickets = getIntent().getExtras().getString("numofTicket");
+
+        tvFdFlightno.setText("Flight No: " + flight.getBusregistrationno());
+        tvFdCabin.setText("Cabin: " + flight.getBustype());
         tvFdArriveTime.setText(flight.getBoardingtime());
         tvFdDepartTime.setText(flight.getDropingtime());
-        tvFdDuration.setText("Flight Duration" +flight.getJournyduration());
-        tvFdPrice.setText("$" + flight.getFare() + " USD");
+        tvFdDuration.setText("Flight Duration: " +flight.getJournyduration());
+        tvDepartAirport.setText(rstart);
+        tvArriveAirport.setText(rdestination);
+        tvFdTickets.setText("Number of Ticket Purchase: " + tickets);
+
+        float price = Float.parseFloat(flight.getFare());
+        price = price * Integer.parseInt(tickets);
+        String prices = String.format("%.2f", price );
+
+        tvFdPrice.setText("$" + prices + " USD");
 
     }
 

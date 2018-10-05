@@ -145,6 +145,13 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/tv_fd_tickets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Number of Tickets" />
+
+            <TextView
                 android:id="@+id/tv_fd_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
