@@ -45,6 +45,7 @@ public class ConfirmationPageActivity extends AppCompatActivity {
     @BindView(R.id.img_QRcode)
     ImageView imgQRcode;
 
+    String numofTicket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,8 @@ public class ConfirmationPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_confirmation_page);
         ButterKnife.bind(this);
 
+
+        numofTicket = getIntent().getExtras().getString("numofTicket");
         showFlightOnScreen();
 
     }
@@ -84,7 +87,9 @@ public class ConfirmationPageActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_fc_select_seat)
     public void onViewClicked() {
+        numofTicket = getIntent().getExtras().getString("numofTicket");
         Intent intent = new Intent(this, EcoSeatReserveActivity.class);
+        intent.putExtra("numofTicket",numofTicket);
         startActivity(intent);
     }
 }

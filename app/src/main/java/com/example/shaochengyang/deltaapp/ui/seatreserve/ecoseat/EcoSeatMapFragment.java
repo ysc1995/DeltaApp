@@ -34,9 +34,16 @@ public class EcoSeatMapFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
 
-        sharedPreferences = this.getActivity().getSharedPreferences("mySP", 0);
+        /*String test = getArguments().getString("numofTicket");*/
+
+        EcoSeatReserveActivity activity = (EcoSeatReserveActivity) getActivity();
+        String nTicket = activity.getNumber();
+
+        int numTicket = Integer.parseInt(nTicket);
+
+       /* sharedPreferences = this.getActivity().getSharedPreferences("mySP", 0);
         String num = sharedPreferences.getString("numofTicket", "0");
-        int numTicket = Integer.parseInt(num);
+        int numTicket = Integer.parseInt(num);*/
 
         clearButton = view.findViewById(R.id.clearButton);
         RecyclerView.LayoutManager manager = new GridLayoutManager(view.getContext(), 4);
@@ -67,7 +74,7 @@ public class EcoSeatMapFragment extends Fragment {
         }
 
         //TODO get the parameter from booking ticket for numofTicket
-        final int numofTicket = numTicket;
+        final int numofTicket =numTicket;
 
         adapter = new EcoSeatAdaptor(seatList, view.getContext(), numofTicket);
         recyclerView.setAdapter(adapter);

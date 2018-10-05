@@ -40,18 +40,21 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
 
     RecyclerView.Adapter adapter;
     ISelectFlightPresenter iSelectFlightPresenter;
+    String numofTicket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_flight);
         ButterKnife.bind(this);
+        numofTicket = getIntent().getExtras().getString("numofTicket");
 
 
         String rid = getIntent().getExtras().getString("rid");
         String rname = getIntent().getExtras().getString("rname");
         String rstart = getIntent().getExtras().getString("rstart");
         String rdestination = getIntent().getExtras().getString("rdestination");
+
 
         //Toast.makeText(this, ""+rname, Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onCreate: " + rid + "\nrname: " + rname + "\nrstart" + rstart
@@ -94,6 +97,7 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
                 Toast.makeText(SelectFlightActivity.this, "clicked", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SelectFlightActivity.this, FlightDetailActivity.class);
                 intent.putExtra("flight_detail", bus);
+                intent.putExtra("numofTicket",numofTicket);
                 startActivity(intent);
             }
         });
