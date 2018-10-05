@@ -83,6 +83,7 @@ public class NetworkHelper implements INetworkHelper{
                 Log.d(TAG, "onResponse: " + busInformation.toString());
 
                 listener.bindFlightListToView(busInformation);
+
             }
 
             @Override

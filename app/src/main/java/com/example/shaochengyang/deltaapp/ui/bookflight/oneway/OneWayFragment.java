@@ -2,6 +2,7 @@ package com.example.shaochengyang.deltaapp.ui.bookflight.oneway;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -51,7 +52,7 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
     TextView tvBfFind;
 
     IOneWayFragmentPresenter oneWayFragmentPresenter;
-
+    SharedPreferences sharedPreferences;
     IDataManager iDataManager;
     @BindView(R.id.txt_bf_from)
     EditText txtBfFrom;
@@ -64,6 +65,7 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
         View view = inflater.inflate(R.layout.frag_one_way, container, false);
 
         unbinder = ButterKnife.bind(this, view);
+        sharedPreferences = this.getActivity().getSharedPreferences("mySP",0);
 
         oneWayFragmentPresenter = new OneWayFragmentPresenter(this);
 
@@ -113,6 +115,8 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
 
                 break;
             case R.id.tv_bf_find:
+
+
                 Boolean checkFlag = true;
                 String fromCity = txtBfFrom.getText().toString();
                 String toCity = txtBfTo.getText().toString();
@@ -160,6 +164,10 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDa
                 }
 
                 if(checkFlag){
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    String numofTicket = txtBfNums.getText().toString();
+                    editor.putString("numofTicket", numofTicket);
+
                     getCityPosition(fromCity,toCity);
                 }
 
