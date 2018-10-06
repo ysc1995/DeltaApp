@@ -16,7 +16,6 @@ import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.DataManager;
 import com.example.shaochengyang.deltaapp.ui.data.IDataManager;
 import com.example.shaochengyang.deltaapp.ui.data.model.SeatInformation;
-import com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatAdaptor;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
 
 import java.util.ArrayList;
@@ -47,10 +46,11 @@ public class FirstClassSeatMapFragment extends Fragment implements IDataManager.
 
         //TODO pass NumofTicket
         //numTicket = Integer.parseInt(nTicket);
-
+        //TODO pass BusID
+        String busid = "102";
 
         IDataManager iDataManager = new DataManager(getActivity());
-        iDataManager.getSeatInformation(this);
+        iDataManager.getSeatInformation(this, busid);
 
 
         numTicket =1;

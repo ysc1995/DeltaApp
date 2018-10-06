@@ -1,17 +1,13 @@
 package com.example.shaochengyang.deltaapp.ui.data.network;
 
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.shaochengyang.deltaapp.ui.bookflight.oneway.OneWayFragment;
 import com.example.shaochengyang.deltaapp.ui.data.IDataManager;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusInformation;
 import com.example.shaochengyang.deltaapp.ui.data.model.City;
 import com.example.shaochengyang.deltaapp.ui.data.model.Route;
-import com.example.shaochengyang.deltaapp.ui.data.model.RouteItem;
 import com.example.shaochengyang.deltaapp.ui.data.model.SeatInformation;
 import com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.ApiService2;
-import com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.ArrayItem;
 import com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.ArrayResponse;
 import com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.model.DemoItem;
 import com.example.shaochengyang.deltaapp.ui.data.network.model.RItem;
@@ -28,9 +24,9 @@ public class NetworkHelper implements INetworkHelper{
     ApiService apiService = RetrofitInstance.getRetrofitInstance().create(ApiService.class);
     ApiService2 apiService2 = com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.RetrofitInstance.getRetrofitInstance().create(ApiService2.class);
     @Override
-    public void getSeatInformation(final IDataManager.onSeatInformationListener listener) {
-
-        Call<SeatInformation> call = apiService.getSeatInformation(102);
+    public void getSeatInformation(final IDataManager.onSeatInformationListener listener, String busid) {
+        int bid = Integer.parseInt(busid);
+        Call<SeatInformation> call = apiService.getSeatInformation(bid);
         call.enqueue(new Callback<SeatInformation>() {
             @Override
             public void onResponse(Call<SeatInformation> call, Response<SeatInformation> response) {

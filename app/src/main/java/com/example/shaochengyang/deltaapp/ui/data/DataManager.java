@@ -2,7 +2,6 @@ package com.example.shaochengyang.deltaapp.ui.data;
 
 import android.content.Context;
 
-import com.example.shaochengyang.deltaapp.ui.bookflight.oneway.OneWayFragment;
 import com.example.shaochengyang.deltaapp.ui.data.database.DbHelper;
 import com.example.shaochengyang.deltaapp.ui.data.database.IDbHelper;
 import com.example.shaochengyang.deltaapp.ui.data.network.INetworkHelper;
@@ -23,8 +22,8 @@ public class DataManager implements IDataManager {
        Server Related Methods
      --------------------------------------------------------------------------------------------*/
     @Override
-    public void getSeatInformation(IDataManager.onSeatInformationListener listener) {
-        iNetworkHelper.getSeatInformation(listener);
+    public void getSeatInformation(onSeatInformationListener listener, String busid) {
+        iNetworkHelper.getSeatInformation(listener, busid);
     }
 
     @Override

@@ -21,6 +21,11 @@ public class EcoSeatReserveActivity extends AppCompatActivity {
 
     }
 
+    public String getBusId(){
+        String busid = getIntent().getExtras().getString("busid");
+        return busid;
+    }
+
     public String getNumber(){
         String numofTicket = getIntent().getExtras().getString("numofTicket");
 

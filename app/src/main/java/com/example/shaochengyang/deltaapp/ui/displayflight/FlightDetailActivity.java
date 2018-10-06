@@ -39,6 +39,7 @@ public class FlightDetailActivity extends AppCompatActivity implements IFlightDe
     @BindView(R.id.tv_fd_tickets)
     TextView tvFdTickets;
 
+    String busid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class FlightDetailActivity extends AppCompatActivity implements IFlightDe
 
         iFlightDetailPresenter = new FlightDetailPresenter(this);
         numofTicket = getIntent().getExtras().getString("numofTicket");
+        busid = getIntent().getExtras().getString("busid");
         showFlightOnScreen();
 
     }
@@ -88,6 +90,7 @@ public class FlightDetailActivity extends AppCompatActivity implements IFlightDe
     public void onViewClicked() {
         //if else for economy and first cabin seat selection activity
         Intent intent = new Intent(this, ConfirmationPageActivity.class);
+        intent.putExtra("busid",busid);
         intent.putExtra("flight_confirmation", flight);
         intent.putExtra("numofTicket",numofTicket);
         startActivity(intent);

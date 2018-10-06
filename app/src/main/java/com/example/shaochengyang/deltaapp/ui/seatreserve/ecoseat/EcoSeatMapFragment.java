@@ -42,7 +42,7 @@ public class EcoSeatMapFragment extends Fragment implements IDataManager.onSeatI
 
         EcoSeatReserveActivity activity = (EcoSeatReserveActivity) getActivity();
         String nTicket = activity.getNumber();
-
+        String busid = activity.getBusId();
         numTicket = Integer.parseInt(nTicket);
 
        /* sharedPreferences = this.getActivity().getSharedPreferences("mySP", 0);
@@ -59,7 +59,7 @@ public class EcoSeatMapFragment extends Fragment implements IDataManager.onSeatI
 
         //get seat info from api
         IDataManager iDataManager = new DataManager(getActivity());
-        iDataManager.getSeatInformation(this);
+        iDataManager.getSeatInformation(this,busid);
 
 
         clearButton.setOnClickListener(new View.OnClickListener() {

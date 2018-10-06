@@ -46,13 +46,14 @@ public class ConfirmationPageActivity extends AppCompatActivity {
     ImageView imgQRcode;
 
     String numofTicket;
+    String busid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation_page);
         ButterKnife.bind(this);
-
+        busid = getIntent().getExtras().getString("busid");
 
         numofTicket = getIntent().getExtras().getString("numofTicket");
         showFlightOnScreen();
@@ -89,6 +90,7 @@ public class ConfirmationPageActivity extends AppCompatActivity {
     public void onViewClicked() {
         numofTicket = getIntent().getExtras().getString("numofTicket");
         Intent intent = new Intent(this, EcoSeatReserveActivity.class);
+        intent.putExtra("busid",busid);
         intent.putExtra("numofTicket",numofTicket);
         startActivity(intent);
     }
