@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/background_light">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sf_price"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_sf_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text="$244.20" />
+                <!--android:editable="false"
+                    android:inputType="textPersonName"-->
+
+
+                <TextView
+                    android:id="@+id/tv_sf_cabintype"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Main" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nonrefundable" />
+
+                <TextView
+                    android:id="@+id/tv_sf_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="View Details" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_sf_route"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text="JFK > FLL / 3h 05m"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_sf_duarion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text="8:05AM > 11:10AM" />
+
+                <TextView
+                    android:id="@+id/tv_sf_numofstops"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nonstop"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_sf_stopDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_sf_viewseats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="View Seats" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
