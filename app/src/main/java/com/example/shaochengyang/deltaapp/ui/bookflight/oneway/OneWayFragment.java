@@ -61,6 +61,8 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
     @BindView(R.id.txt_bf_to)
     EditText txtBfTo;
 
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,7 +89,11 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
             btnBfPlus.setClickable(false);
         }
 
+
         //oneWayFragmentPresenter.getCityInformation();
+
+
+
 
         return view;
     }
@@ -256,8 +262,57 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
     @Override
     public void passDemoInfo(List<DemoItem> demoItemList) {
         //TODO add demoItem to intent
-        Intent i = new Intent(getActivity(), CompareActivity.class);
-        startActivity(i);
+        String numofTicket = txtBfNums.getText().toString();
+
+        String first_id = demoItemList.get(0).getDemoName();
+        String first_route = demoItemList.get(0).getDemoNumber();
+        String first_duration = demoItemList.get(0).getDemoDuration();
+        String first_stops = demoItemList.get(0).getDemoStop();
+        String first_stopDuration = demoItemList.get(0).getDemoStopDuration();
+        String first_price = demoItemList.get(0).getDemoPrice();
+
+        String second_id = demoItemList.get(1).getDemoName();
+        String second_route = demoItemList.get(1).getDemoNumber();
+        String second_duration = demoItemList.get(1).getDemoDuration();
+        String second_stops = demoItemList.get(1).getDemoStop();
+        String second_stopDuration = demoItemList.get(1).getDemoStopDuration();
+        String second_price = demoItemList.get(1).getDemoPrice();
+
+        String third_id = demoItemList.get(2).getDemoName();
+        String third_route = demoItemList.get(2).getDemoNumber();
+        String third_duration = demoItemList.get(2).getDemoDuration();
+        String third_stops = demoItemList.get(2).getDemoStop();
+        String third_stopDuration = demoItemList.get(2).getDemoStopDuration();
+        String third_price = demoItemList.get(2).getDemoPrice();
+
+        Intent intent = new Intent(getActivity(), CompareActivity.class);
+
+        intent.putExtra("numofTicket",numofTicket);
+
+        intent.putExtra("first_id",first_id);
+        intent.putExtra("first_route",first_route);
+        intent.putExtra("first_duration",first_duration);
+        intent.putExtra("first_stops",first_stops);
+        intent.putExtra("first_stopDuration",first_stopDuration);
+        intent.putExtra("first_price",first_price);
+
+        intent.putExtra("second_id",second_id);
+        intent.putExtra("second_route",second_route);
+        intent.putExtra("second_duration",second_duration);
+        intent.putExtra("second_stops",second_stops);
+        intent.putExtra("second_stopDuration",second_stopDuration);
+        intent.putExtra("second_price",second_price);
+
+        intent.putExtra("third_id",third_id);
+        intent.putExtra("third_route",third_route);
+        intent.putExtra("third_duration",third_duration);
+        intent.putExtra("third_stops",third_stops);
+        intent.putExtra("third_stopDuration",third_stopDuration);
+        intent.putExtra("third_price",third_price);
+        startActivity(intent);
+        /*CompareActivity compareActivity = new CompareActivity();
+        compareActivity.showDemoFlightList(demoItemList);*/
+
     }
 
    /* @Override

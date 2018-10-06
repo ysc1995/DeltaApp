@@ -33,6 +33,10 @@ public class BusinformationItem implements Parcelable {
 	@SerializedName("dropingtime")
 	private String dropingtime;
 
+	public BusinformationItem(){
+
+	}
+
 	protected BusinformationItem(Parcel in) {
 		busid = in.readString();
 		fare = in.readString();
