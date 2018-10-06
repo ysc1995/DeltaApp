@@ -69,12 +69,12 @@ public class FlightDetailActivity extends AppCompatActivity implements IFlightDe
         tvArriveAirport.setText(rdestination);
         tvFdTickets.setText("Number of Ticket Purchase: " + tickets);
 
-        //TODO Error here
+
         String fare = flight.getFare();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(fare);
         stringBuilder.deleteCharAt(fare.length()-1);
-        //
+
 
         float price = Float.parseFloat(stringBuilder.toString());
 

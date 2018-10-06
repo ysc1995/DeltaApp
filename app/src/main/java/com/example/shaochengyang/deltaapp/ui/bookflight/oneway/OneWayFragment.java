@@ -261,7 +261,7 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
 
     @Override
     public void passDemoInfo(List<DemoItem> demoItemList) {
-        //TODO add demoItem to intent
+
         String numofTicket = txtBfNums.getText().toString();
 
         String first_id = demoItemList.get(0).getDemoName();
