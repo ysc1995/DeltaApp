@@ -176,6 +176,7 @@ public class CompareActivity extends AppCompatActivity {
             public void onItemClick(DemoItem bus) {
                 //Toast.makeText(SelectFlightActivity.this, "clicked", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CompareActivity.this, FlightDetailActivity.class);
+                intent.putExtra("busid","102");
                 BusinformationItem item = new BusinformationItem();
                 item.setBusid(bus.getDemoNumber());
                 item.setBoardingtime("07:00:00 AM");

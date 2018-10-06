@@ -91,11 +91,13 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
 
         BusinformationItem flight = flightList.get(0);
         Log.d("show", "showFlightList: " + flight.getBusid());
+        final String busid = flight.getBusid();
         adapter = new FlightListAdapter(flightList, new FlightListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BusinformationItem bus) {
                 Toast.makeText(SelectFlightActivity.this, "clicked", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SelectFlightActivity.this, FlightDetailActivity.class);
+                intent.putExtra("busid",busid);
                 intent.putExtra("flight_detail", bus);
                 intent.putExtra("rstart", rstart);
                 intent.putExtra("rdestination", rdestination);
