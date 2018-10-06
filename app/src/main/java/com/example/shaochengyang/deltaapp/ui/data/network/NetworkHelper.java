@@ -28,7 +28,7 @@ public class NetworkHelper implements INetworkHelper{
     ApiService apiService = RetrofitInstance.getRetrofitInstance().create(ApiService.class);
     ApiService2 apiService2 = com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.RetrofitInstance.getRetrofitInstance().create(ApiService2.class);
     @Override
-    public void getSeatInformation(IDataManager.onSeatInformationListener listener) {
+    public void getSeatInformation(final IDataManager.onSeatInformationListener listener) {
 
         Call<SeatInformation> call = apiService.getSeatInformation(102);
         call.enqueue(new Callback<SeatInformation>() {
@@ -36,6 +36,8 @@ public class NetworkHelper implements INetworkHelper{
             public void onResponse(Call<SeatInformation> call, Response<SeatInformation> response) {
                 Log.d(TAG, "onResponse: " + response.body().toString());
                 SeatInformation seatInformation = response.body();
+
+                listener.passSeatInfo(seatInformation);
                 Log.d(TAG, "onResponse: " + seatInformation.getSeatinformation());
             }
 
