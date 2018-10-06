@@ -63,8 +63,6 @@ public class EcoSeatAdaptor extends RecyclerView.Adapter<EcoSeatAdaptor.MyViewHo
         if(!seatList.get(position).isVisible()) {
             holder.img.setImageResource(R.drawable.black_img);
 
-           
-
         }
         else{
             if(seatList.get(position).getIschoosed()){
