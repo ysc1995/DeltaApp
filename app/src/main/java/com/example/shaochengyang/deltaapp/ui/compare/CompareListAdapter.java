@@ -49,10 +49,10 @@ public class CompareListAdapter extends RecyclerView.Adapter<CompareListAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.price.setText("$"+demoItemList.get(position).getDemoPrice());
-        holder.duration.setText(demoItemList.get(position).getDemoDuration());
+        holder.duration.setText("FLIGHT DURATION: "+demoItemList.get(position).getDemoDuration());
         holder.route.setText(demoItemList.get(position).getDemoName());
-        holder.stopDuration.setText(demoItemList.get(position).getDemoStopDuration());
-        holder.numofStops.setText(demoItemList.get(position).getDemoStop());
+        holder.stopDuration.setText("STOP DURATION: "+demoItemList.get(position).getDemoStopDuration());
+        holder.numofStops.setText("NUMBER OF STOPS: "+demoItemList.get(position).getDemoStop());
 
         holder.bind(demoItemList.get(position),listener);
 

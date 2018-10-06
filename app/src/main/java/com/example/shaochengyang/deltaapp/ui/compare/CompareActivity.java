@@ -8,6 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,14 +52,19 @@ public class CompareActivity extends AppCompatActivity {
 
     RecyclerView.Adapter adapter;
     String numofTicket, first_id,first_route,first_duration,first_stops,first_stopDuration,first_price,second_id,second_route,second_duration,second_stops,second_stopDuration,second_price,third_id,third_route,third_duration,third_stops,third_stopDuration,third_price;
+    Spinner filterSpinner;
 
 
-
+    DemoItem demoItem1,demoItem2,demoItem3;
+    List<DemoItem> demoItemList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare);
         ButterKnife.bind(this);
+
+        demoItemList = new ArrayList<>();
+        filterSpinner = findViewById(R.id.sp_filter);
 
         numofTicket = getIntent().getExtras().getString("numofTicket");
 
@@ -67,7 +75,7 @@ public class CompareActivity extends AppCompatActivity {
         first_stopDuration = getIntent().getExtras().getString("first_stopDuration");
         first_price = getIntent().getExtras().getString("first_price");
 
-        DemoItem demoItem1 = new DemoItem(first_id,first_route,first_duration,first_stops,first_stopDuration,first_price);
+        demoItem1 = new DemoItem(first_id,first_route,first_duration,first_stops,first_stopDuration,first_price);
 
         second_id = getIntent().getExtras().getString("second_id");
         second_route = getIntent().getExtras().getString("second_route");
@@ -76,7 +84,7 @@ public class CompareActivity extends AppCompatActivity {
         second_stopDuration = getIntent().getExtras().getString("second_stopDuration");
         second_price = getIntent().getExtras().getString("second_price");
 
-        DemoItem demoItem2 = new DemoItem(second_id,second_route,second_duration,second_stops,second_stopDuration,second_price);
+        demoItem2 = new DemoItem(second_id,second_route,second_duration,second_stops,second_stopDuration,second_price);
 
         third_id = getIntent().getExtras().getString("third_id");
         third_route = getIntent().getExtras().getString("third_route");
@@ -85,16 +93,74 @@ public class CompareActivity extends AppCompatActivity {
         third_stopDuration = getIntent().getExtras().getString("third_stopDuration");
         third_price = getIntent().getExtras().getString("third_price");
 
-        DemoItem demoItem3 = new DemoItem(third_id,third_route,third_duration,third_stops,third_stopDuration,third_price);
+        demoItem3 = new DemoItem(third_id,third_route,third_duration,third_stops,third_stopDuration,third_price);
 
-        List<DemoItem> demoItemList = new ArrayList<>();
-        demoItemList.add(demoItem1);
-        demoItemList.add(demoItem2);
-        demoItemList.add(demoItem3);
+        String[] filterItems = new String[]{"BY PRICE","BY DURATION","BY STOP", "BY STOP TIME"};
 
-        showDemoFlightList(demoItemList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,filterItems);
+        filterSpinner.setAdapter(arrayAdapter);
+
+        filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        demoItemList.clear();
+                        demoItemList.add(demoItem1);
+                        demoItemList.add(demoItem2);
+                        demoItemList.add(demoItem3);
+
+                        showDemoFlightList(demoItemList);
+                        break;
+                    case 1:
+                        demoItemList.clear();
+
+                        demoItemList.add(demoItem1);
+
+                        demoItemList.add(demoItem3);
+                        demoItemList.add(demoItem2);
+                        showDemoFlightList(demoItemList);
+                        break;
+                    case 2:
+                        demoItemList.clear();
+
+                        demoItemList.add(demoItem1);
+
+                        demoItemList.add(demoItem3);
+                        demoItemList.add(demoItem2);
+                        showDemoFlightList(demoItemList);
+                        break;
+                    case 3:
+                        demoItemList.clear();
+
+                        demoItemList.add(demoItem1);
+                        demoItemList.add(demoItem2);
+                        demoItemList.add(demoItem3);
+
+                        showDemoFlightList(demoItemList);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                demoItemList.clear();
+
+                demoItemList.add(demoItem1);
+
+                demoItemList.add(demoItem3);
+                demoItemList.add(demoItem2);
+                showDemoFlightList(demoItemList);
+
+            }
+        });
+
+
+
+
 
     }
+
 
     public void showDemoFlightList(List<DemoItem> demoItemList) {
         final String rstart = "St. Charles, IL";
