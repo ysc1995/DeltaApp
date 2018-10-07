@@ -44,9 +44,9 @@ public class FirstClassSeatMapFragment extends Fragment implements IDataManager.
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         seatList = new ArrayList<>();
 
-        //TODO pass NumofTicket
+
         //numTicket = Integer.parseInt(nTicket);
-        //TODO pass BusID
+
         String busid = "102";
 
         IDataManager iDataManager = new DataManager(getActivity());
