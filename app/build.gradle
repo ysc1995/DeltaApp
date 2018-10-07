@@ -4,8 +4,9 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.shaochengyang.deltaapp"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 27
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -40,6 +41,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //firebase authentication
+    //implementation 'com.google.firebase:firebase-core:16.0.4'
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
     // Required only if Facebook login support is required
     // Find the latest Facebook SDK releases here: https://goo.gl/Ce5L94

@@ -3,7 +3,7 @@ package com.example.shaochengyang.deltaapp.ui.data.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.example.shaochengyang.deltaapp.ui.data.database.CustomerFlight.CustomerFlightEntry;
+import com.example.shaochengyang.deltaapp.ui.data.database.CustomerFlightContract.CustomerFlightEntry;
 import com.example.shaochengyang.deltaapp.ui.data.database.MyFlightTicketContract.MyFlightTicketEntry;
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
