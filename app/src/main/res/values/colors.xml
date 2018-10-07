@@ -10,6 +10,10 @@
 
     <color name="colorButton">#df2a42</color>
 
+    <color name="colorDark">#1f1f20</color>
+    <color name="colorLightGreyBlue">#d6dce6</color>
+
+
 
 
 </resources>

@@ -20,12 +20,14 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp">
+        android:layout_height="249dp"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="10dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="221dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
             app:layout_constraintEnd_toStartOf="@+id/tv_arrive_airport"
             app:layout_constraintStart_toStartOf="@+id/tv_arrive_airport">
 
@@ -34,6 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Flight No"
+                style="@style/sectionHeader"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -45,6 +48,7 @@
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="27dp"
                 android:text="Main Cabin"
+                style="@style/sectionHeader"
                 app:layout_constraintBottom_toBottomOf="@+id/textView11"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -92,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:text="JFK: JOHN F KENNEDY INTERNAL"
+                style="@style/sectionHeader"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_fc_depart_time" />
 
@@ -102,6 +107,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="113dp"
                 android:text="FLL: FT LAUDERDALE-HOLLYWOOD INTL"
+                style="@style/sectionHeader"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_fc_arrive_time"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -112,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="Duration"
+                style="@style/sectionHeader"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_depart_airport" />
 
