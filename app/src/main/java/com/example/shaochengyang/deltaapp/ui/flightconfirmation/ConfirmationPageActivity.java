@@ -98,8 +98,6 @@ public class ConfirmationPageActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EcoSeatReserveActivity.class);
         intent.putExtra("busid", flight.getBusid());
         intent.putExtra("numofTicket", flightTicket.getNumOfPassenger());
-        /*intent.putExtra("busid",busid);
-        intent.putExtra("numofTicket",numofTicket);*/
         startActivity(intent);
     }
 }

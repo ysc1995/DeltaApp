@@ -1,6 +1,7 @@
 package com.example.shaochengyang.deltaapp.ui.purchaseticket;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -27,6 +28,7 @@ public class PurchaseTicketActivity extends AppCompatActivity implements IPurcha
     private static final String TAG = "PurchaseTicketActivity";
 
     IPurchaseTicketPresenter iPurchaseTicketPresenter;
+    SharedPreferences sharedPreferences;
     FlightTicket flightTicket;
     RecyclerView.Adapter adapter;
     int numOfTicket;
@@ -69,7 +71,9 @@ public class PurchaseTicketActivity extends AppCompatActivity implements IPurcha
 
     @Override
     public List<CustomerFlight> getUserInputData(){
-
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        String email = sharedPreferences.getString("email", "");
+        Log.d(TAG, "getUserInputData Email:++++++++ " + email);
         customerFlightList = new ArrayList<>();
 
         for(int i = 0; i < numOfTicket; i++){
@@ -83,7 +87,7 @@ public class PurchaseTicketActivity extends AppCompatActivity implements IPurcha
             String passport = cusPassport.getText().toString();
             Log.d(TAG, "getUserInputData: " + fname);
             CustomerFlight customerFlight
-                    = new CustomerFlight(fname, lname, passport, ticketID);
+                    = new CustomerFlight(email, fname, lname, passport, ticketID);
             customerFlightList.add(customerFlight);
         }
 

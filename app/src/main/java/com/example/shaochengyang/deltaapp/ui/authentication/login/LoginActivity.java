@@ -1,6 +1,7 @@
 package com.example.shaochengyang.deltaapp.ui.authentication.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     int RC_SIGN_IN = 1;
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +64,10 @@ public class LoginActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("userEmail", user.getEmail());
+                editor.commit();
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 // ...

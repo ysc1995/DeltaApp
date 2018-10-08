@@ -1,9 +1,10 @@
 package com.example.shaochengyang.deltaapp.ui.data.model;
 
 public class CustomerFlight {
-    String fname, lname, passport, ticketNum;
+    String email, fname, lname, passport, ticketNum;
 
-    public CustomerFlight(String fname, String lname, String passport, String ticketNum) {
+    public CustomerFlight(String email, String fname, String lname, String passport, String ticketNum) {
+        this.email = email;
         this.fname = fname;
         this.lname = lname;
         this.passport = passport;
@@ -24,5 +25,9 @@ public class CustomerFlight {
 
     public String getTicketNum() {
         return ticketNum;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

@@ -12,11 +12,12 @@ public interface IDbHelper {
 
     void getCityPosition(IDataManager.onDatabaseListener onDatabaseListener, String fromCity, String toCity);
 
-    void addPurchasedTicketToDB(IDataManager.onPurchasedTicketListener listener, FlightTicket ticket);
-    void linkTicketToCustomerDB(IDataManager.onPurchasedTicketListener listener, List<CustomerFlight> customerFlights);
+
     void sendPurchasedTicketToDBWithCustomerInfo(
             IDataManager.onPurchasedTicketListener listener,
             List<CustomerFlight> customerFlights,
             FlightTicket ticket);
+
+    void getMyFlightListFromDb(IDataManager.onUpcomingFlightListener listener);
 
 }
