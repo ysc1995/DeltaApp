@@ -8,6 +8,7 @@ import com.example.shaochengyang.deltaapp.ui.bookflight.BookFlightFragment;
 import com.example.shaochengyang.deltaapp.ui.findtrip.FindTripFragment;
 import com.example.shaochengyang.deltaapp.ui.map.MapViewFragment;
 import com.example.shaochengyang.deltaapp.ui.more.MoreFragment;
+import com.example.shaochengyang.deltaapp.ui.upcomingflight.UpcomingFlightFragment;
 
 public class PagerMain extends FragmentStatePagerAdapter {
 
@@ -28,8 +29,8 @@ public class PagerMain extends FragmentStatePagerAdapter {
                 return tab1;
 
             case 1:
-                FindTripFragment tab2 = new FindTripFragment();
-                return tab2;
+                UpcomingFlightFragment upcomingFlightFragment = new UpcomingFlightFragment();
+                return upcomingFlightFragment;
             case 2:
                 BookFlightFragment tab3 = new BookFlightFragment();
                 //FindTripFragment tab3 = new FindTripFragment();

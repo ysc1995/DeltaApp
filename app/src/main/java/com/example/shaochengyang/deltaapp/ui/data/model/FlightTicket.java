@@ -14,6 +14,7 @@ public class FlightTicket implements Parcelable {
     }
 
 
+
     protected FlightTicket(Parcel in) {
         ticketID = in.readString();
         numOfPassenger = in.readString();

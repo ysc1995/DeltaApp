@@ -27,13 +27,6 @@ public class PurchaseTicketPresenter implements IPurchaseTicketPresenter, IDataM
 
     }
 
-    @Override
-    public void sendUserInputDataToDB() {
-        List<CustomerFlight> customerFlightList
-                = iPurchaseTicketView.getUserInputData();
-        iDataManager.linkTicketToCustomerDB(this, customerFlightList);
-
-    }
 
     @Override
     public void sendPurchasedTicketToDB() {
@@ -41,13 +34,10 @@ public class PurchaseTicketPresenter implements IPurchaseTicketPresenter, IDataM
         List<CustomerFlight> customerFlightList
                 = iPurchaseTicketView.getUserInputData();
 
-        iDataManager.sendPurchasedTicketToDBWithCustomerInfo(this, customerFlightList, ticket);
+        iDataManager.sendPurchasedTicketToDBWithCustomerInfo(this,
+                customerFlightList, ticket);
     }
 
-    @Override
-    public void addedTicketToDb(boolean result) {
-        Log.d(TAG, "addedTicketToDb: " + result);
-    }
 
     @Override
     public void linkedTicketToCustomerDb(boolean result) {

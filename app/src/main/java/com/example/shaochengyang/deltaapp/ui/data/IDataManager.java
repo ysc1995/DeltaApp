@@ -2,6 +2,8 @@ package com.example.shaochengyang.deltaapp.ui.data;
 
 import com.example.shaochengyang.deltaapp.ui.data.database.IDbHelper;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusInformation;
+import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
+import com.example.shaochengyang.deltaapp.ui.data.model.MyFlightTicket;
 import com.example.shaochengyang.deltaapp.ui.data.model.SeatInformation;
 import com.example.shaochengyang.deltaapp.ui.data.network.INetworkHelper;
 import com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.model.DemoItem;
@@ -41,8 +43,11 @@ public interface IDataManager extends INetworkHelper ,IDbHelper{
     }
 
     interface onPurchasedTicketListener{
-        void addedTicketToDb(boolean result);
         void linkedTicketToCustomerDb(boolean result);
+    }
+
+    interface onUpcomingFlightListener{
+        void bindMyFlightListToView(List<MyFlightTicket> flightTickets);
     }
 
 }

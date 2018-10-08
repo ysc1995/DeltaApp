@@ -66,18 +66,14 @@ public class DataManager implements IDataManager {
         dbHelper.getCityPosition(onDatabaseListener,fromCity,toCity);
     }
 
-    @Override
-    public void addPurchasedTicketToDB(onPurchasedTicketListener listener, FlightTicket ticket) {
-        dbHelper.addPurchasedTicketToDB(listener, ticket);
-    }
-
-    @Override
-    public void linkTicketToCustomerDB(onPurchasedTicketListener listener, List<CustomerFlight> customerFlights) {
-        dbHelper.linkTicketToCustomerDB(listener, customerFlights);
-    }
 
     @Override
     public void sendPurchasedTicketToDBWithCustomerInfo(onPurchasedTicketListener listener, List<CustomerFlight> customerFlights, FlightTicket ticket) {
         dbHelper.sendPurchasedTicketToDBWithCustomerInfo(listener, customerFlights, ticket);
+    }
+
+    @Override
+    public void getMyFlightListFromDb(onUpcomingFlightListener listener) {
+        dbHelper.getMyFlightListFromDb(listener);
     }
 }
