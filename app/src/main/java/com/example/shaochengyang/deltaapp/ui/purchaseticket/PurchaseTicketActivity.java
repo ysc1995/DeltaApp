@@ -15,6 +15,7 @@ import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.model.CustomerFlight;
 import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.flightconfirmation.ConfirmationPageActivity;
+import com.example.shaochengyang.deltaapp.ui.payment.PaypalActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,7 +105,7 @@ public class PurchaseTicketActivity extends AppCompatActivity implements IPurcha
 
     @Override
     public void toConfirmationPage() {
-        Intent intent = new Intent(this, ConfirmationPageActivity.class);
+        Intent intent = new Intent(this, PaypalActivity.class);
 
         intent.putExtra("ticket", flightTicket);
         intent.putExtra("isFirst",isFirst);

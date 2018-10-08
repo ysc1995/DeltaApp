@@ -61,11 +61,18 @@ dependencies {
     //google map util
     implementation 'com.google.maps.android:android-maps-utils:0.5+'
     implementation 'com.google.maps:google-maps-services:0.1.20'
-    //
+
     //RxValidator
     implementation 'com.github.phajduk:RxValidator:94fdca4ec6504985d6187080f1d9e9580703c082'
 
+    //paypal
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
 
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 //apply plugin: 'com.google.gms:google-services:4.1.0'
 apply plugin: 'com.google.gms.google-services'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
