@@ -4,15 +4,16 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDataManager.onDemoListener, IDataManager.onCityInformationListener, IDataManager.onRouteIdListener,IDataManager.onDatabaseListener {
+public class OneWayFragment extends Fragment implements IOneWayFragmentView, IDataManager.onDemoListener, IDataManager.onCityInformationListener, IDataManager.onRouteIdListener, IDataManager.onDatabaseListener {
 
     private static final String TAG = "OneWayFragment";
     @BindView(R.id.btn_bf_minus)
@@ -60,7 +61,8 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
     EditText txtBfFrom;
     @BindView(R.id.txt_bf_to)
     EditText txtBfTo;
-
+    @BindView(R.id.textView7)
+    TextView clickDate;
 
 
     @Nullable
@@ -68,8 +70,9 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_one_way, container, false);
 
+
         unbinder = ButterKnife.bind(this, view);
-        sharedPreferences = this.getActivity().getSharedPreferences("mySP",0);
+        sharedPreferences = this.getActivity().getSharedPreferences("mySP", 0);
 
         oneWayFragmentPresenter = new OneWayFragmentPresenter(this);
 
@@ -91,8 +94,6 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
 
 
         //oneWayFragmentPresenter.getCityInformation();
-
-
 
 
         return view;
@@ -127,63 +128,64 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
                 Boolean checkFlag = true;
                 String fromCity = txtBfFrom.getText().toString();
                 String toCity = txtBfTo.getText().toString();
-                if(fromCity.contains("Charles")){
+                if (fromCity.contains("harl")) {
                     fromCity = "St. Charles, IL";
-                }else if(fromCity.contains("New York")||fromCity.contains("NY")){
+                } else if (fromCity.contains("New York") || fromCity.contains("NY")) {
                     fromCity = "New York City, NY";
-                }else if(fromCity.contains("Dallas")){
+                } else if (fromCity.contains("allas")) {
                     fromCity = "Dallas, TX";
-                }else if(fromCity.contains("Atlanta")){
+                } else if (fromCity.contains("tlan")) {
                     fromCity = "Atlanta, GA";
-                }
-                else if(fromCity.contains("ashington")){
+                } else if (fromCity.contains("ashington")||fromCity.contains("DC")) {
                     fromCity = "Washington, DC";
-                }
-                else if(fromCity.contains("hiladelp")){
+                } else if (fromCity.contains("hil")) {
                     fromCity = "Philadelphia, PA";
-                }else if(fromCity.contains("enver")){
+                } else if (fromCity.contains("enver")) {
                     fromCity = "Denver, CO";
-                }else{
+                } else {
                     Toast.makeText(getActivity(), "Please Type Valid Departure City", Toast.LENGTH_SHORT).show();
                     checkFlag = false;
                 }
 
 
-                if(toCity.contains("Charles")){
+                if (toCity.contains("harles")) {
                     toCity = "St. Charles, IL";
-                }else if(toCity.contains("New York")||toCity.contains("NY")){
+                } else if (toCity.contains("New York") || toCity.contains("NY")) {
                     toCity = "New York City, NY";
-                }else if(toCity.contains("Dallas")){
+                } else if (toCity.contains("allas")) {
                     toCity = "Dallas, TX";
-                }else if(toCity.contains("Atlanta")){
+                } else if (toCity.contains("tlan")) {
                     toCity = "Atlanta, GA";
-                }
-                else if(toCity.contains("ashington")){
+                } else if (toCity.contains("ashington")||toCity.contains("DC")) {
                     toCity = "Washington, DC";
-                }
-                else if(toCity.contains("hiladelp")){
+                } else if (toCity.contains("hil")) {
                     toCity = "Philadelphia, PA";
-                }else if(toCity.contains("enver")){
+                } else if (toCity.contains("enver")) {
                     toCity = "Denver, CO";
-                }else{
+                } else {
                     Toast.makeText(getActivity(), "Please Type Valid Destination City", Toast.LENGTH_SHORT).show();
                     checkFlag = false;
                 }
 
+                if(clickDate.getText().toString().equals("Select Date")){
+                    Toast.makeText(getActivity(), "Please Select Flight Date", Toast.LENGTH_SHORT).show();
+                    checkFlag=false;
+                }
 
-                if(checkFlag&&fromCity.equals("St. Charles, IL")&&toCity.equals("New York City, NY")){
+
+                if (checkFlag && fromCity.equals("St. Charles, IL") && toCity.equals("New York City, NY")) {
                     iDataManager.getCompareDemo(this);
 
                     break;
                 }
 
 
-                if(checkFlag){
+                if (checkFlag) {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     String numofTicket = txtBfNums.getText().toString();
                     editor.putString("numofTicket", numofTicket);
 
-                    getCityPosition(fromCity,toCity);
+                    getCityPosition(fromCity, toCity);
                 }
 
                 break;
@@ -191,7 +193,7 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
     }
 
     private void getCityPosition(String fromCity, String toCity) {
-        iDataManager.getCityPosition(this,fromCity,toCity);
+        iDataManager.getCityPosition(this, fromCity, toCity);
     }
 
     @Override
@@ -238,8 +240,8 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
 
     @Override
     public void passCityPositions(String fromCityLati, String fromCityLong, String toCityLati, String toCityLong) {
-        Log.d(TAG, "passCityPositions: "+fromCityLati+" "+fromCityLong+" "+toCityLati+" "+toCityLong);
-        iDataManager.getRouteId(this,fromCityLati,fromCityLong,toCityLati,toCityLong);
+        Log.d(TAG, "passCityPositions: " + fromCityLati + " " + fromCityLong + " " + toCityLati + " " + toCityLong);
+        iDataManager.getRouteId(this, fromCityLati, fromCityLong, toCityLati, toCityLong);
     }
 
     @Override
@@ -250,12 +252,12 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
         String rname = rItemList.get(0).getRname();
         String rstart = rItemList.get(0).getRstart();
         String rdestination = rItemList.get(0).getRdestination();
-        intent.putExtra("rid",rid);
-        intent.putExtra("rname",rname);
-        intent.putExtra("rstart",rstart);
-        intent.putExtra("rdestination",rdestination);
-        intent.putExtra("numofTicket",numofTicket);
-
+        intent.putExtra("rid", rid);
+        intent.putExtra("rname", rname);
+        intent.putExtra("rstart", rstart);
+        intent.putExtra("rdestination", rdestination);
+        intent.putExtra("numofTicket", numofTicket);
+        intent.putExtra("date",clickDate.getText().toString());
         startActivity(intent);
     }
 
@@ -287,32 +289,39 @@ public class OneWayFragment extends Fragment implements IOneWayFragmentView,IDat
 
         Intent intent = new Intent(getActivity(), CompareActivity.class);
 
-        intent.putExtra("numofTicket",numofTicket);
+        intent.putExtra("numofTicket", numofTicket);
 
-        intent.putExtra("first_id",first_id);
-        intent.putExtra("first_route",first_route);
-        intent.putExtra("first_duration",first_duration);
-        intent.putExtra("first_stops",first_stops);
-        intent.putExtra("first_stopDuration",first_stopDuration);
-        intent.putExtra("first_price",first_price);
+        intent.putExtra("first_id", first_id);
+        intent.putExtra("first_route", first_route);
+        intent.putExtra("first_duration", first_duration);
+        intent.putExtra("first_stops", first_stops);
+        intent.putExtra("first_stopDuration", first_stopDuration);
+        intent.putExtra("first_price", first_price);
 
-        intent.putExtra("second_id",second_id);
-        intent.putExtra("second_route",second_route);
-        intent.putExtra("second_duration",second_duration);
-        intent.putExtra("second_stops",second_stops);
-        intent.putExtra("second_stopDuration",second_stopDuration);
-        intent.putExtra("second_price",second_price);
+        intent.putExtra("second_id", second_id);
+        intent.putExtra("second_route", second_route);
+        intent.putExtra("second_duration", second_duration);
+        intent.putExtra("second_stops", second_stops);
+        intent.putExtra("second_stopDuration", second_stopDuration);
+        intent.putExtra("second_price", second_price);
 
-        intent.putExtra("third_id",third_id);
-        intent.putExtra("third_route",third_route);
-        intent.putExtra("third_duration",third_duration);
-        intent.putExtra("third_stops",third_stops);
-        intent.putExtra("third_stopDuration",third_stopDuration);
-        intent.putExtra("third_price",third_price);
+        intent.putExtra("third_id", third_id);
+        intent.putExtra("third_route", third_route);
+        intent.putExtra("third_duration", third_duration);
+        intent.putExtra("third_stops", third_stops);
+        intent.putExtra("third_stopDuration", third_stopDuration);
+        intent.putExtra("third_price", third_price);
         startActivity(intent);
         /*CompareActivity compareActivity = new CompareActivity();
         compareActivity.showDemoFlightList(demoItemList);*/
 
+    }
+
+    @OnClick(R.id.textView7)
+    public void onViewClicked() {
+        DialogFragment newFragment = new SelectDateFragment();
+
+        newFragment.show(getFragmentManager(), "DatePicker");
     }
 
    /* @Override

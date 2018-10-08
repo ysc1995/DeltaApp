@@ -1,6 +1,7 @@
 package com.example.shaochengyang.deltaapp.ui.data.network;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.shaochengyang.deltaapp.ui.data.IDataManager;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusInformation;
@@ -110,16 +111,18 @@ public class NetworkHelper implements INetworkHelper{
 
                 Log.d(TAG, "onResponse: " + response.body().toString());
                 Route route = response.body();
-                for(int i = 0 ; i < route.getRoute().size();i++) {
-                    String rid = route.getRoute().get(i).getId();
-                    String rname = route.getRoute().get(i).getRoutename();
-                    String rstart = route.getRoute().get(i).getRouteStartfrom();
-                    String rdestination = route.getRoute().get(i).getRouteDestination();
-                    RItem routeItem = new RItem(rid,rname,rstart,rdestination);
-                    rItemList.add(routeItem);
-                }
-                onRouteIdListener.passRouteInfo(rItemList);
+                if(response.body().getRoute()!=null) {
+                    for (int i = 0; i < route.getRoute().size(); i++) {
+                        String rid = route.getRoute().get(i).getId();
+                        String rname = route.getRoute().get(i).getRoutename();
+                        String rstart = route.getRoute().get(i).getRouteStartfrom();
+                        String rdestination = route.getRoute().get(i).getRouteDestination();
+                        RItem routeItem = new RItem(rid, rname, rstart, rdestination);
+                        rItemList.add(routeItem);
+                    }
 
+                    onRouteIdListener.passRouteInfo(rItemList);
+                }
 
 
                 Log.d(TAG, "onResponse: " + route.toString());

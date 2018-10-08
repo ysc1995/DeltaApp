@@ -50,11 +50,11 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
         setContentView(R.layout.activity_select_flight);
         ButterKnife.bind(this);
         numofTicket = getIntent().getExtras().getString("numofTicket");
-
+        String date = getIntent().getExtras().getString("date");
         String rid = getIntent().getExtras().getString("rid");
 
         int routeId = Integer.parseInt(rid);
-
+        tvSfDate.setText(date);
         iSelectFlightPresenter = new SelectFlightPresenter(this);
         iSelectFlightPresenter.onActivityCreate(routeId);
 
