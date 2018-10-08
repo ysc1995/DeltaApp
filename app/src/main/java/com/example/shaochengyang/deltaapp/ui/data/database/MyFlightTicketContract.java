@@ -10,6 +10,7 @@ public class MyFlightTicketContract {
     public static abstract class MyFlightTicketEntry implements BaseColumns{
         public static final String TABLE_NAME = "FlightTicket";
         public static final String FticketID = "TicketID";
+        public static final String FnumOfPassenger = "NumOfPassenger";
         public static final String Fnumber = "FlightNum";
         public static final String Fcabin = "CabinType";
         public static final String Fprice = "Price";

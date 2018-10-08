@@ -73,10 +73,12 @@
 
     <!--Display Flight Details $ confirmation page -->
     <string name="fd_price_title">Total Price (All Fights)</string>
-    <string name="fd_pay">Pay</string>
+    <string name="fd_pay">Purchase</string>
     <string name="fd_title">Flight Details</string>
     <string name="fc_title">Flight Confirmation</string>
     <string name="fc_select_seat">Select Seat</string>
     <string name="title_activity_maps2">Map</string>
+
+    <string name="payment_btn">Pay</string>
 
 </resources>
