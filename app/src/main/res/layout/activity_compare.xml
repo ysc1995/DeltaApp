@@ -8,6 +8,27 @@
     tools:context=".ui.compare.CompareActivity"
     tools:layout_editor_absoluteY="25dp">
 
+    <Button
+        android:id="@+id/mainUnderColor2"
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/firstUnderColor"
+        app:layout_constraintEnd_toEndOf="@+id/tv_sf_main_cabin"
+        app:layout_constraintStart_toStartOf="@+id/tv_sf_main_cabin"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sf_main_cabin" />
+
+    <Button
+        android:id="@+id/firstUnderColor2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="11dp"
+        android:background="@color/colorMainBackground"
+        app:layout_constraintBottom_toTopOf="@+id/rv_flight_list"
+        app:layout_constraintEnd_toEndOf="@+id/tv_sf_first_cabin"
+        app:layout_constraintStart_toStartOf="@+id/tv_sf_first_cabin"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sf_first_cabin" />
+
     <TextView
         android:id="@+id/tv_sf_title"
         android:layout_width="0dp"

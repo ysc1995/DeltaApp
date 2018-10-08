@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.ArraySet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,15 +21,18 @@ import com.example.shaochengyang.deltaapp.ui.data.model.SeatInformation;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class EcoSeatMapFragment extends Fragment implements IDataManager.onSeatInformationListener {
     SharedPreferences sharedPreferences;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     List<Seat> seatList;
-    Button clearButton;
+    Button clearButton, comfirmButton;
     int numTicket;
+    Set<String> seatIDSet;
 
     @Nullable
     @Override
@@ -71,6 +75,21 @@ public class EcoSeatMapFragment extends Fragment implements IDataManager.onSeatI
 
                 adapter = new EcoSeatAdaptor(seatList, view.getContext(), numTicket);
                 recyclerView.setAdapter(adapter);
+
+            }
+        });
+
+        comfirmButton = view.findViewById(R.id.comfirmButton);
+        comfirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                seatIDSet = new HashSet<>();
+                for(int i = 0; i < 46; i ++){
+                    if(seatList.get(i).getIschoosed()){
+                        seatIDSet.add(seatList.get(i).getId());
+                    }
+                }
+
 
             }
         });

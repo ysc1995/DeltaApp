@@ -12,7 +12,10 @@ import android.widget.TextView;
 import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class EcoSeatAdaptor extends RecyclerView.Adapter<EcoSeatAdaptor.MyViewHolder> {
 
@@ -60,6 +63,7 @@ public class EcoSeatAdaptor extends RecyclerView.Adapter<EcoSeatAdaptor.MyViewHo
     //bind data with the holder
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
 
+
         if(!seatList.get(position).isVisible()) {
             holder.img.setImageResource(R.drawable.black_img);
 
@@ -86,8 +90,10 @@ public class EcoSeatAdaptor extends RecyclerView.Adapter<EcoSeatAdaptor.MyViewHo
                                 holder.img.setImageResource(seatList.get(position).selectedtype);
                                 seatList.get(position).setIschoosed(true);
                                 count++;
+
                             } else {
                                 holder.img.setImageResource(seatList.get(position).unselectedtype);
+
                             }
                         }
                     }

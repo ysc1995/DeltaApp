@@ -44,6 +44,7 @@ public class FlightDetailActivity extends AppCompatActivity implements IFlightDe
     @BindView(R.id.tv_fd_tickets)
     TextView tvFdTickets;
 
+    Boolean isFirst;
 
 
     @Override
@@ -53,7 +54,7 @@ public class FlightDetailActivity extends AppCompatActivity implements IFlightDe
         ButterKnife.bind(this);
 
         iFlightDetailPresenter = new FlightDetailPresenter(this);
-
+        isFirst = getIntent().getExtras().getBoolean("isFirst");
         showFlightOnScreen();
 
     }
@@ -94,6 +95,7 @@ public class FlightDetailActivity extends AppCompatActivity implements IFlightDe
         //if else for economy and first cabin seat selection activity
         Intent intent = new Intent(this, PurchaseTicketActivity.class);
         intent.putExtra("ticket", flightTicket);
+        intent.putExtra("isFirst",isFirst);
 
         startActivity(intent);
     }

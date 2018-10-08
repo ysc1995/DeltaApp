@@ -6,25 +6,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.shaochengyang.deltaapp.R;
-
 import com.example.shaochengyang.deltaapp.ui.compareshowflight.DemoFlightDetailActivity;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusinformationItem;
 import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.model.DemoItem;
-import com.example.shaochengyang.deltaapp.ui.displayflight.FlightDetailActivity;
-import com.example.shaochengyang.deltaapp.ui.selectflight.FlightListAdapter;
-import com.example.shaochengyang.deltaapp.ui.selectflight.SelectFlightActivity;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,12 +47,18 @@ public class CompareActivity extends AppCompatActivity {
     RecyclerView rvFlightList;
 
     RecyclerView.Adapter adapter;
-    String numofTicket, first_id,first_route,first_duration,first_stops,first_stopDuration,first_price,second_id,second_route,second_duration,second_stops,second_stopDuration,second_price,third_id,third_route,third_duration,third_stops,third_stopDuration,third_price;
+    String numofTicket, first_id, first_route, first_duration, first_stops, first_stopDuration, first_price, second_id, second_route, second_duration, second_stops, second_stopDuration, second_price, third_id, third_route, third_duration, third_stops, third_stopDuration, third_price;
     Spinner filterSpinner;
     FlightTicket flightTicket;
 
-    DemoItem demoItem1,demoItem2,demoItem3;
+    DemoItem demoItem1, demoItem2, demoItem3;
     List<DemoItem> demoItemList;
+    @BindView(R.id.mainUnderColor2)
+    Button mainUnderColor2;
+    @BindView(R.id.firstUnderColor2)
+    Button firstUnderColor2;
+
+    Boolean isFirst;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +77,7 @@ public class CompareActivity extends AppCompatActivity {
         first_stopDuration = getIntent().getExtras().getString("first_stopDuration");
         first_price = getIntent().getExtras().getString("first_price");
 
-        demoItem1 = new DemoItem(first_id,first_route,first_duration,first_stops,first_stopDuration,first_price);
+        demoItem1 = new DemoItem(first_id, first_route, first_duration, first_stops, first_stopDuration, first_price);
 
         second_id = getIntent().getExtras().getString("second_id");
         second_route = getIntent().getExtras().getString("second_route");
@@ -86,7 +86,7 @@ public class CompareActivity extends AppCompatActivity {
         second_stopDuration = getIntent().getExtras().getString("second_stopDuration");
         second_price = getIntent().getExtras().getString("second_price");
 
-        demoItem2 = new DemoItem(second_id,second_route,second_duration,second_stops,second_stopDuration,second_price);
+        demoItem2 = new DemoItem(second_id, second_route, second_duration, second_stops, second_stopDuration, second_price);
 
         third_id = getIntent().getExtras().getString("third_id");
         third_route = getIntent().getExtras().getString("third_route");
@@ -95,17 +95,17 @@ public class CompareActivity extends AppCompatActivity {
         third_stopDuration = getIntent().getExtras().getString("third_stopDuration");
         third_price = getIntent().getExtras().getString("third_price");
 
-        demoItem3 = new DemoItem(third_id,third_route,third_duration,third_stops,third_stopDuration,third_price);
+        demoItem3 = new DemoItem(third_id, third_route, third_duration, third_stops, third_stopDuration, third_price);
 
-        String[] filterItems = new String[]{"BY PRICE","BY DURATION","BY STOP", "BY STOP TIME"};
+        String[] filterItems = new String[]{"BY PRICE", "BY DURATION", "BY STOP", "BY STOP TIME"};
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,filterItems);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, filterItems);
         filterSpinner.setAdapter(arrayAdapter);
 
         filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
+                switch (position) {
                     case 0:
                         demoItemList.clear();
                         demoItemList.add(demoItem1);
@@ -158,9 +158,6 @@ public class CompareActivity extends AppCompatActivity {
         });
 
 
-
-
-
     }
 
 
@@ -194,7 +191,7 @@ public class CompareActivity extends AppCompatActivity {
 
 
                 Intent intent = new Intent(CompareActivity.this, DemoFlightDetailActivity.class);
-                intent.putExtra("busid","102");
+                intent.putExtra("busid", "102");
 
 
                 BusinformationItem item = new BusinformationItem();
@@ -211,13 +208,13 @@ public class CompareActivity extends AppCompatActivity {
                 intent.putExtra("flight_detail", item);
                 intent.putExtra("rstart", rstart);
                 intent.putExtra("rdestination", rdestination);
-                intent.putExtra("numofTicket",numofTicket);
+                intent.putExtra("numofTicket", numofTicket);
                 intent.putExtra("ticket", flightTicket);
+                intent.putExtra("isFirst",isFirst);
                 startActivity(intent);
             }
         }, rstart, rdestination);
         rvFlightList.setAdapter(adapter);
-
 
 
     }
@@ -226,8 +223,14 @@ public class CompareActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_sf_main_cabin:
+                mainUnderColor2.setBackgroundResource(R.color.colorWhite);
+                firstUnderColor2.setBackgroundResource(R.color.colorMainBackground);
+                isFirst = false;
                 break;
             case R.id.tv_sf_first_cabin:
+                firstUnderColor2.setBackgroundResource(R.color.colorWhite);
+                mainUnderColor2.setBackgroundResource(R.color.colorMainBackground);
+                isFirst = true;
                 break;
         }
     }

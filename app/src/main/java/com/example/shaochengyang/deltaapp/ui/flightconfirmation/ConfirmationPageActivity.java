@@ -12,6 +12,7 @@ import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusinformationItem;
 import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatReserveActivity;
+import com.example.shaochengyang.deltaapp.ui.seatreserve.firstclassseat.FirstClassSeatReserveActivity;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -47,6 +48,7 @@ public class ConfirmationPageActivity extends AppCompatActivity {
     @BindView(R.id.img_QRcode)
     ImageView imgQRcode;
 
+    Boolean isFirst;
     /*String numofTicket;
     String busid;*/
 
@@ -55,6 +57,7 @@ public class ConfirmationPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation_page);
         ButterKnife.bind(this);
+        isFirst = getIntent().getExtras().getBoolean("isFirst");
         /*busid = getIntent().getExtras().getString("busid");
 
         numofTicket = getIntent().getExtras().getString("numofTicket");*/
@@ -94,10 +97,18 @@ public class ConfirmationPageActivity extends AppCompatActivity {
     @OnClick(R.id.btn_fc_select_seat)
     public void onViewClicked() {
         //numofTicket = getIntent().getExtras().getString("numofTicket");
+        if(!isFirst) {
+            Intent intent = new Intent(this, EcoSeatReserveActivity.class);
+            intent.putExtra("busid", flight.getBusid());
+            intent.putExtra("numofTicket", flightTicket.getNumOfPassenger());
 
-        Intent intent = new Intent(this, EcoSeatReserveActivity.class);
-        intent.putExtra("busid", flight.getBusid());
-        intent.putExtra("numofTicket", flightTicket.getNumOfPassenger());
-        startActivity(intent);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, FirstClassSeatReserveActivity.class);
+            intent.putExtra("busid", flight.getBusid());
+            intent.putExtra("numofTicket", flightTicket.getNumOfPassenger());
+
+            startActivity(intent);
+        }
     }
 }

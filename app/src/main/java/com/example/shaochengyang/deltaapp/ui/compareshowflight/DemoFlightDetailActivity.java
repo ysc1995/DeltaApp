@@ -44,13 +44,14 @@ public class DemoFlightDetailActivity extends AppCompatActivity implements IFlig
 
     String busid;
 
+    Boolean isFirst;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight_detail);
         ButterKnife.bind(this);
 
-
+        isFirst = getIntent().getExtras().getBoolean("isFirst");
         numofTicket = getIntent().getExtras().getString("numofTicket");
         busid = getIntent().getExtras().getString("busid");
         showFlightOnScreen();
@@ -96,6 +97,7 @@ public class DemoFlightDetailActivity extends AppCompatActivity implements IFlig
         intent.putExtra("busid",busid);
         intent.putExtra("flight_confirmation", flight);
         intent.putExtra("numofTicket",numofTicket);
+        intent.putExtra("isFirst",isFirst);
         startActivity(intent);
     }
 }

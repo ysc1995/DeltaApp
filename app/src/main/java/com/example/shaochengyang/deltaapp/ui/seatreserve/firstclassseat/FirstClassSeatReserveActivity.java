@@ -12,4 +12,17 @@ public class FirstClassSeatReserveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_class_seat_reserve);
     }
+
+
+
+    public String getBusId(){
+        String busid = getIntent().getExtras().getString("busid");
+        return busid;
+    }
+
+    public String getNumber(){
+        String numofTicket = getIntent().getExtras().getString("numofTicket");
+
+        return numofTicket;
+    }
 }

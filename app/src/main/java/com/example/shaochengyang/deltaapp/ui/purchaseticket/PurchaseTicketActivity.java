@@ -38,12 +38,15 @@ public class PurchaseTicketActivity extends AppCompatActivity implements IPurcha
     @BindView(R.id.rv_cus_info)
     RecyclerView rvCusInfo;
 
+    Boolean isFirst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_ticket);
         ButterKnife.bind(this);
+
+        isFirst = getIntent().getExtras().getBoolean("isFirst");
 
         iPurchaseTicketPresenter = new PurchaseTicketPresenter(this);
 
@@ -104,6 +107,7 @@ public class PurchaseTicketActivity extends AppCompatActivity implements IPurcha
         Intent intent = new Intent(this, ConfirmationPageActivity.class);
 
         intent.putExtra("ticket", flightTicket);
+        intent.putExtra("isFirst",isFirst);
         startActivity(intent);
     }
 }

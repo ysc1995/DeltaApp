@@ -1,5 +1,6 @@
 package com.example.shaochengyang.deltaapp.ui.selectflight;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +9,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusinformationItem;
@@ -21,6 +22,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.example.shaochengyang.deltaapp.R.color.colorWhite;
 
 public class SelectFlightActivity extends AppCompatActivity implements ISelectFlightView {
 
@@ -43,10 +46,19 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
     ISelectFlightPresenter iSelectFlightPresenter;
     String numofTicket;
     FlightTicket flightTicket;
+    @BindView(R.id.firstUnderColor)
+    Button firstUnderColor;
+    @BindView(R.id.mainUnderColor)
+    Button mainUnderColor;
+
+    Boolean isFirst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        //mainUnderColor.setBackgroundResource(R.color.colorWhite);
+        isFirst = false;
         setContentView(R.layout.activity_select_flight);
         ButterKnife.bind(this);
         numofTicket = getIntent().getExtras().getString("numofTicket");
@@ -59,19 +71,6 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
         iSelectFlightPresenter.onActivityCreate(routeId);
 
     }
-
-    @OnClick({R.id.tv_sf_main_cabin, R.id.tv_sf_first_cabin})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-
-            case R.id.tv_sf_main_cabin:
-                break;
-            case R.id.tv_sf_first_cabin:
-                break;
-
-        }
-    }
-
 
 
     @Override
@@ -95,26 +94,47 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
 
         adapter = new FlightListAdapter(flightList,
                 new FlightListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BusinformationItem bus) {
+                    @Override
+                    public void onItemClick(BusinformationItem bus) {
 
-                flightTicket = new FlightTicket(bus);
-                flightTicket.setNumOfPassenger(numofTicket);
-                flightTicket.setDepartAirport(rstart);
-                flightTicket.setArriveAirport(rdestination);
 
-                Intent intent = new Intent(SelectFlightActivity.this, FlightDetailActivity.class);
+                        flightTicket = new FlightTicket(bus);
+                        flightTicket.setNumOfPassenger(numofTicket);
+                        flightTicket.setDepartAirport(rstart);
+                        flightTicket.setArriveAirport(rdestination);
+
+                        Intent intent = new Intent(SelectFlightActivity.this, FlightDetailActivity.class);
 
                 /*intent.putExtra("busid",busid);
                 intent.putExtra("flight_detail", bus);
                 intent.putExtra("rstart", rstart);
                 intent.putExtra("rdestination", rdestination);
                 intent.putExtra("numofTicket",numofTicket);*/
-                intent.putExtra("ticket", flightTicket);
-                startActivity(intent);
-            }
-        }, rstart, rdestination);
+                        intent.putExtra("ticket", flightTicket);
+
+                        intent.putExtra("isFirst",isFirst);
+                        startActivity(intent);
+                    }
+                }, rstart, rdestination);
         rvFlightList.setAdapter(adapter);
 
+    }
+
+
+    @OnClick({R.id.tv_sf_main_cabin, R.id.tv_sf_first_cabin})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_sf_main_cabin:
+
+                mainUnderColor.setBackgroundResource(R.color.colorWhite);
+                firstUnderColor.setBackgroundResource(R.color.colorMainBackground);
+                isFirst = false;
+                break;
+            case R.id.tv_sf_first_cabin:
+                firstUnderColor.setBackgroundResource(R.color.colorWhite);
+                mainUnderColor.setBackgroundResource(R.color.colorMainBackground);
+                isFirst = true;
+                break;
+        }
     }
 }

@@ -16,17 +16,21 @@ import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.DataManager;
 import com.example.shaochengyang.deltaapp.ui.data.IDataManager;
 import com.example.shaochengyang.deltaapp.ui.data.model.SeatInformation;
+import com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatReserveActivity;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class FirstClassSeatMapFragment extends Fragment implements IDataManager.onSeatInformationListener {
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     List<Seat> seatList;
-    Button clearButton;
+    Button clearButton,comfirmButton;
     int numTicket;
+    Set<String> seatIDSet;
 
     @Nullable
     @Override
@@ -44,16 +48,19 @@ public class FirstClassSeatMapFragment extends Fragment implements IDataManager.
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         seatList = new ArrayList<>();
 
-
+        FirstClassSeatReserveActivity activity = (FirstClassSeatReserveActivity) getActivity();
+        String nTicket = activity.getNumber();
+        numTicket = Integer.parseInt(nTicket);
+        String busid = activity.getBusId();
         //numTicket = Integer.parseInt(nTicket);
 
-        String busid = "102";
+
 
         IDataManager iDataManager = new DataManager(getActivity());
         iDataManager.getSeatInformation(this, busid);
 
 
-        numTicket =1;
+
 
 
         clearButton.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +72,21 @@ public class FirstClassSeatMapFragment extends Fragment implements IDataManager.
 
                 adapter = new FirstClassSeatAdaptor(seatList, view.getContext(), numTicket);
                 recyclerView.setAdapter(adapter);
+
+            }
+        });
+
+        comfirmButton = view.findViewById(R.id.comfirmButton);
+        comfirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                seatIDSet = new HashSet<>();
+                for(int i = 0; i < 15; i ++){
+                    if(seatList.get(i).getIschoosed()){
+                        seatIDSet.add(seatList.get(i).getId());
+                    }
+                }
+
 
             }
         });
