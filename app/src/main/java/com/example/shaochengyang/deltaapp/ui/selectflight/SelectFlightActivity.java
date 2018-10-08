@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusinformationItem;
+import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.displayflight.FlightDetailActivity;
 
 import java.util.List;
@@ -41,6 +42,7 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
     RecyclerView.Adapter adapter;
     ISelectFlightPresenter iSelectFlightPresenter;
     String numofTicket;
+    FlightTicket flightTicket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,6 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
         setContentView(R.layout.activity_select_flight);
         ButterKnife.bind(this);
         numofTicket = getIntent().getExtras().getString("numofTicket");
-
 
         String rid = getIntent().getExtras().getString("rid");
 
@@ -79,7 +80,6 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
         final String rstart = getIntent().getExtras().getString("rstart");
         final String rdestination = getIntent().getExtras().getString("rdestination");
 
-        //Toast.makeText(this, ""+rname, Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onCreate: " + "\nrname: " + rname + "\nrstart" + rstart
                 + "\nrdestination: " + rdestination);
 
@@ -89,19 +89,27 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
         rvFlightList.setLayoutManager(layoutManager);
         rvFlightList.setItemAnimator(new DefaultItemAnimator());
 
-        BusinformationItem flight = flightList.get(0);
+        final BusinformationItem flight = flightList.get(0);
         Log.d("show", "showFlightList: " + flight.getBusid());
         final String busid = flight.getBusid();
-        adapter = new FlightListAdapter(flightList, new FlightListAdapter.OnItemClickListener() {
+
+        adapter = new FlightListAdapter(flightList,
+                new FlightListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BusinformationItem bus) {
-                Toast.makeText(SelectFlightActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+
+                flightTicket = new FlightTicket(bus);
+                flightTicket.setNumOfPassenger(numofTicket);
+                flightTicket.setDepartAirport(rstart);
+                flightTicket.setArriveAirport(rdestination);
+
                 Intent intent = new Intent(SelectFlightActivity.this, FlightDetailActivity.class);
-                intent.putExtra("busid",busid);
+                /*intent.putExtra("busid",busid);
                 intent.putExtra("flight_detail", bus);
                 intent.putExtra("rstart", rstart);
                 intent.putExtra("rdestination", rdestination);
-                intent.putExtra("numofTicket",numofTicket);
+                intent.putExtra("numofTicket",numofTicket);*/
+                intent.putExtra("ticket", flightTicket);
                 startActivity(intent);
             }
         }, rstart, rdestination);

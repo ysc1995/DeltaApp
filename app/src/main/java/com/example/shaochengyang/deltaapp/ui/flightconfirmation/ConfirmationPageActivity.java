@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusinformationItem;
+import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatReserveActivity;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -24,6 +25,7 @@ import butterknife.OnClick;
 public class ConfirmationPageActivity extends AppCompatActivity {
 
     private static final String TAG = "ConfirmationPageActivit";
+    FlightTicket flightTicket;
     BusinformationItem flight;
 
     @BindView(R.id.tv_fc_flightno)
@@ -45,23 +47,26 @@ public class ConfirmationPageActivity extends AppCompatActivity {
     @BindView(R.id.img_QRcode)
     ImageView imgQRcode;
 
-    String numofTicket;
-    String busid;
+    /*String numofTicket;
+    String busid;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation_page);
         ButterKnife.bind(this);
-        busid = getIntent().getExtras().getString("busid");
+        /*busid = getIntent().getExtras().getString("busid");
 
-        numofTicket = getIntent().getExtras().getString("numofTicket");
+        numofTicket = getIntent().getExtras().getString("numofTicket");*/
         showFlightOnScreen();
 
     }
 
     private void showFlightOnScreen() {
-        flight = getIntent().getExtras().getParcelable("flight_confirmation");
+
+        flightTicket = getIntent().getExtras().getParcelable("ticket");
+        flight = flightTicket.getFlightDetails();
+        //flight = getIntent().getExtras().getParcelable("flight_confirmation");
         tvFcFlightno.setText(flight.getBusregistrationno());
         tvFcCabin.setText(flight.getBustype());
         tvFcArriveTime.setText(flight.getBoardingtime());
@@ -88,10 +93,13 @@ public class ConfirmationPageActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_fc_select_seat)
     public void onViewClicked() {
-        numofTicket = getIntent().getExtras().getString("numofTicket");
+        //numofTicket = getIntent().getExtras().getString("numofTicket");
+
         Intent intent = new Intent(this, EcoSeatReserveActivity.class);
-        intent.putExtra("busid",busid);
-        intent.putExtra("numofTicket",numofTicket);
+        intent.putExtra("busid", flight.getBusid());
+        intent.putExtra("numofTicket", flightTicket.getNumOfPassenger());
+        /*intent.putExtra("busid",busid);
+        intent.putExtra("numofTicket",numofTicket);*/
         startActivity(intent);
     }
 }

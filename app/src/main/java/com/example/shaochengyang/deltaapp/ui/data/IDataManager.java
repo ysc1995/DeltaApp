@@ -40,5 +40,9 @@ public interface IDataManager extends INetworkHelper ,IDbHelper{
         void passCityPositions(String fromCityLati, String fromCityLong, String toCityLati, String toCityLong);
     }
 
+    interface onPurchasedTicketListener{
+        void addedTicketToDb(boolean result);
+        void linkedTicketToCustomerDb(boolean result);
+    }
 
 }

@@ -33,9 +33,9 @@
 
     <!--bottom menu-->
     <string name="bm_mytrip">My Trip</string>
-    <string name="bm_today">Today</string>
+    <string name="bm_today">Upcoming</string>
     <string name="bm_book">Book</string>
-    <string name="bm_feed">Feed</string>
+    <string name="bm_feed">Map</string>
     <string name="bm_more">More</string>
 
     <!--show flights-->
@@ -67,14 +67,18 @@
     <string name="more_skyclub">Delta Sky Club</string>
     <string name="more_logout">Log Out</string>
     <string name="more_airport_map">Airport Map</string>
+
     <!--<string name="title_activity_maps">Map</string>-->
     <string name="more_seat">Seat Select</string>
 
     <!--Display Flight Details $ confirmation page -->
     <string name="fd_price_title">Total Price (All Fights)</string>
-    <string name="fd_pay">Pay</string>
+    <string name="fd_pay">Purchase</string>
     <string name="fd_title">Flight Details</string>
     <string name="fc_title">Flight Confirmation</string>
     <string name="fc_select_seat">Select Seat</string>
+    <string name="title_activity_maps2">Map</string>
+
+    <string name="payment_btn">Pay</string>
 
 </resources>

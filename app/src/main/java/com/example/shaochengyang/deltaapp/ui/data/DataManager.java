@@ -4,8 +4,12 @@ import android.content.Context;
 
 import com.example.shaochengyang.deltaapp.ui.data.database.DbHelper;
 import com.example.shaochengyang.deltaapp.ui.data.database.IDbHelper;
+import com.example.shaochengyang.deltaapp.ui.data.model.CustomerFlight;
+import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.data.network.INetworkHelper;
 import com.example.shaochengyang.deltaapp.ui.data.network.NetworkHelper;
+
+import java.util.List;
 
 public class DataManager implements IDataManager {
 
@@ -60,5 +64,20 @@ public class DataManager implements IDataManager {
     @Override
     public void getCityPosition(onDatabaseListener onDatabaseListener, String fromCity, String toCity) {
         dbHelper.getCityPosition(onDatabaseListener,fromCity,toCity);
+    }
+
+    @Override
+    public void addPurchasedTicketToDB(onPurchasedTicketListener listener, FlightTicket ticket) {
+        dbHelper.addPurchasedTicketToDB(listener, ticket);
+    }
+
+    @Override
+    public void linkTicketToCustomerDB(onPurchasedTicketListener listener, List<CustomerFlight> customerFlights) {
+        dbHelper.linkTicketToCustomerDB(listener, customerFlights);
+    }
+
+    @Override
+    public void sendPurchasedTicketToDBWithCustomerInfo(onPurchasedTicketListener listener, List<CustomerFlight> customerFlights, FlightTicket ticket) {
+        dbHelper.sendPurchasedTicketToDBWithCustomerInfo(listener, customerFlights, ticket);
     }
 }
