@@ -4,13 +4,13 @@ public class MyFlightTicket {
     String ticketId, create_time, numOfPass, flightnum, cabin,
             price, depAirport, arrAirport, depTime,arrTime, fduration;
 
-    public MyFlightTicket(String ticketId, String create_time,
+    public MyFlightTicket(String ticketId,
                           String numOfPass, String flightnum,
                           String cabin, String price, String depAirport,
                           String arrAirport, String depTime, String arrTime,
                           String fduration) {
         this.ticketId = ticketId;
-        this.create_time = create_time;
+        //this.create_time = create_time;
         this.numOfPass = numOfPass;
         this.flightnum = flightnum;
         this.cabin = cabin;

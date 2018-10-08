@@ -9,6 +9,10 @@ public class FlightTicket implements Parcelable {
 
     BusinformationItem flightDetails;
 
+    public FlightTicket(){
+
+    }
+
     public FlightTicket(BusinformationItem flightDetails) {
         this.flightDetails = flightDetails;
     }

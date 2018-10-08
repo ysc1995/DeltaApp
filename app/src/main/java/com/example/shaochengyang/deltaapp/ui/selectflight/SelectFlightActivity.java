@@ -104,6 +104,7 @@ public class SelectFlightActivity extends AppCompatActivity implements ISelectFl
                 flightTicket.setArriveAirport(rdestination);
 
                 Intent intent = new Intent(SelectFlightActivity.this, FlightDetailActivity.class);
+
                 /*intent.putExtra("busid",busid);
                 intent.putExtra("flight_detail", bus);
                 intent.putExtra("rstart", rstart);

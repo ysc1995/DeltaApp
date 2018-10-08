@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.example.shaochengyang.deltaapp.R;
 
+import com.example.shaochengyang.deltaapp.ui.compareshowflight.DemoFlightDetailActivity;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusinformationItem;
+import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.model.DemoItem;
 import com.example.shaochengyang.deltaapp.ui.displayflight.FlightDetailActivity;
 import com.example.shaochengyang.deltaapp.ui.selectflight.FlightListAdapter;
@@ -53,7 +55,7 @@ public class CompareActivity extends AppCompatActivity {
     RecyclerView.Adapter adapter;
     String numofTicket, first_id,first_route,first_duration,first_stops,first_stopDuration,first_price,second_id,second_route,second_duration,second_stops,second_stopDuration,second_price,third_id,third_route,third_duration,third_stops,third_stopDuration,third_price;
     Spinner filterSpinner;
-
+    FlightTicket flightTicket;
 
     DemoItem demoItem1,demoItem2,demoItem3;
     List<DemoItem> demoItemList;
@@ -175,8 +177,26 @@ public class CompareActivity extends AppCompatActivity {
             @Override
             public void onItemClick(DemoItem bus) {
                 //Toast.makeText(SelectFlightActivity.this, "clicked", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CompareActivity.this, FlightDetailActivity.class);
+
+
+               /* flightTicket = new FlightTicket();
+                flightTicket.setNumOfPassenger(numofTicket);
+                flightTicket.setDepartAirport(rstart);
+                flightTicket.setArriveAirport(rdestination);
+                flightTicket.getFlightDetails().setBusid("102");
+                flightTicket.getFlightDetails().setBoardingtime("07:00:00 AM");
+                flightTicket.getFlightDetails().setDropingtime("03:45:00 PM");
+                flightTicket.getFlightDetails().setFare(bus.getDemoPrice());
+                flightTicket.getFlightDetails().setJournyduration(bus.getDemoDuration());
+                flightTicket.getFlightDetails().setBustype("ECONOMY EXTRA");
+                flightTicket.getFlightDetails().setBusregistrationno(bus.getDemoNumber());
+                flightTicket.getFlightDetails().setBusdeparturetime("07:00:00 AM");*/
+
+
+                Intent intent = new Intent(CompareActivity.this, DemoFlightDetailActivity.class);
                 intent.putExtra("busid","102");
+
+
                 BusinformationItem item = new BusinformationItem();
                 item.setBusid(bus.getDemoNumber());
                 item.setBoardingtime("07:00:00 AM");
@@ -192,6 +212,7 @@ public class CompareActivity extends AppCompatActivity {
                 intent.putExtra("rstart", rstart);
                 intent.putExtra("rdestination", rdestination);
                 intent.putExtra("numofTicket",numofTicket);
+                intent.putExtra("ticket", flightTicket);
                 startActivity(intent);
             }
         }, rstart, rdestination);
