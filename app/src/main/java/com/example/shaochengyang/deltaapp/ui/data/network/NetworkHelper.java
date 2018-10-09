@@ -163,11 +163,13 @@ public class NetworkHelper implements INetworkHelper{
 
             @Override
             public void onFailure(Call<ArrayResponse> call, Throwable t) {
-
+                Log.d(TAG, "onFailure: "+t.getMessage().toString());
             }
         });
 
     }
+
+
 
 
 }

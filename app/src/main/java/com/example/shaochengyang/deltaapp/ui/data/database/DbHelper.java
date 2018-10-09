@@ -130,4 +130,14 @@ public class DbHelper implements IDbHelper {
 
 
     }
+
+    @Override
+    public void updateTicket(IDataManager.onUpdatingTicketListener onUpdatingTicketListener, String id) {
+        ContentValues values = new ContentValues();
+        values.put(CustomerFlightEntry.FticketID, id);
+
+        scdatabase.update(CustomerFlightEntry.TABLE_NAME, values, CustomerFlightEntry.FticketID + "=" + "'AA135'", null);
+        scdatabase.update(MyFlightTicketEntry.TABLE_NAME, values, CustomerFlightEntry.FticketID + "=" + "'AA135'", null);
+
+    }
 }

@@ -50,4 +50,8 @@ public interface IDataManager extends INetworkHelper ,IDbHelper{
         void bindMyFlightListToView(List<MyFlightTicket> flightTickets);
     }
 
+    interface onUpdatingTicketListener{
+
+    }
+
 }

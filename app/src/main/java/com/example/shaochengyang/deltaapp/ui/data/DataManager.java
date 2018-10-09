@@ -55,6 +55,11 @@ public class DataManager implements IDataManager {
         iNetworkHelper.getCompareDemo(onDemoListener);
     }
 
+    @Override
+    public void updateTicket(onUpdatingTicketListener onUpdatingTicketListener, String id) {
+        dbHelper.updateTicket(onUpdatingTicketListener, id);
+    }
+
 
     @Override
     public void addRow(onDatabaseListener onDatabaseListener, String cityName, String cityLati, String cityLong) {

@@ -36,6 +36,7 @@ public class PurchaseTicketPresenter implements IPurchaseTicketPresenter, IDataM
 
         iDataManager.sendPurchasedTicketToDBWithCustomerInfo(this,
                 customerFlightList, ticket);
+        /*iPurchaseTicketView.passTicketInfo(customerFlightList,ticket);*/
     }
 
 

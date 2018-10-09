@@ -20,4 +20,5 @@ public interface IDbHelper {
 
     void getMyFlightListFromDb(IDataManager.onUpcomingFlightListener listener);
 
+    void updateTicket(IDataManager.onUpdatingTicketListener onUpdatingTicketListener, String id);
 }

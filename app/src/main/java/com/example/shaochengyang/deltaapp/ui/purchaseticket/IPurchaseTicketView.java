@@ -11,4 +11,5 @@ public interface IPurchaseTicketView {
     FlightTicket getPurchasedTicket();
     void toConfirmationPage();
 
+    void passTicketInfo(List<CustomerFlight> customerFlightList, FlightTicket ticket);
 }

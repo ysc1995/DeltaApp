@@ -1,6 +1,7 @@
 package com.example.shaochengyang.deltaapp.ui.payment
 
 import android.app.Activity
+import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
@@ -12,15 +13,21 @@ import com.paypal.android.sdk.payments.*
 import org.json.JSONException
 import java.math.BigDecimal
 import com.example.shaochengyang.deltaapp.R
+import com.example.shaochengyang.deltaapp.ui.data.DataManager
+import com.example.shaochengyang.deltaapp.ui.data.IDataManager
 import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket
 import com.example.shaochengyang.deltaapp.ui.flightconfirmation.ConfirmationPageActivity
 import kotlinx.android.synthetic.main.activity_paypal.*
 
-class PaypalActivity : AppCompatActivity() {
+class PaypalActivity : AppCompatActivity() ,IDataManager.onUpdatingTicketListener{
+
+
+    internal var iDataManager: IDataManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_paypal)
+        iDataManager = DataManager(this)
     }
 
     fun displayResult(result:String){
@@ -52,8 +59,8 @@ class PaypalActivity : AppCompatActivity() {
 
     private  fun getThingToBuy(paymentIntent: String): PayPalPayment {
 
-        return PayPalPayment(BigDecimal("200"), "USD"
-                , "Name of Item", paymentIntent)
+        return PayPalPayment(BigDecimal("400"), "USD"
+                , "Flight Ticket", paymentIntent)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -64,6 +71,12 @@ class PaypalActivity : AppCompatActivity() {
                     try {
                         Log.i(TAG, confirm.toJSONObject().toString(4))
                         Log.i(TAG, confirm.payment.toJSONObject().toString(4))
+
+
+                        Log.i(TAG, confirm.toJSONObject().getJSONObject("response").get("id").toString())
+                        val id:String = confirm.toJSONObject().getJSONObject("response").get("id").toString()
+                        iDataManager?.updateTicket(this,id)
+
 
 
                         displayResult("PaymentConfirmation info received from PayPal")
@@ -120,3 +133,5 @@ class PaypalActivity : AppCompatActivity() {
         super.onDestroy()
     }
 }
+
+

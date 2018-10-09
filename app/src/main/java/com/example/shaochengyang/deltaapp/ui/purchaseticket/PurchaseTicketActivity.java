@@ -3,6 +3,7 @@ package com.example.shaochengyang.deltaapp.ui.purchaseticket;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.shaochengyang.deltaapp.R;
+import com.example.shaochengyang.deltaapp.ui.data.DataManager;
 import com.example.shaochengyang.deltaapp.ui.data.model.CustomerFlight;
 import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.flightconfirmation.ConfirmationPageActivity;
@@ -33,7 +35,7 @@ public class PurchaseTicketActivity extends AppCompatActivity implements IPurcha
     FlightTicket flightTicket;
     RecyclerView.Adapter adapter;
     int numOfTicket;
-    String ticketID = "AA135";
+    String ticketID = "AA135";  //don't remove
     List<CustomerFlight> customerFlightList;
 
     @BindView(R.id.rv_cus_info)
@@ -43,6 +45,8 @@ public class PurchaseTicketActivity extends AppCompatActivity implements IPurcha
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_ticket);
         ButterKnife.bind(this);
@@ -110,5 +114,14 @@ public class PurchaseTicketActivity extends AppCompatActivity implements IPurcha
         intent.putExtra("ticket", flightTicket);
         intent.putExtra("isFirst",isFirst);
         startActivity(intent);
+    }
+
+    @Override
+    public void passTicketInfo(List<CustomerFlight> customerFlightList, FlightTicket ticket) {
+        /*Intent intent = new Intent(this,PaypalActivity.class);
+        intent.putExtra("ticket",ticket);
+        intent.putExtra("customerFlightList", (Parcelable) customerFlightList);
+        intent.putExtra("isFirst",isFirst);
+        startActivity(intent);*/
     }
 }
