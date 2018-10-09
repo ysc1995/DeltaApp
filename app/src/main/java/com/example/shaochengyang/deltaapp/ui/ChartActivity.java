@@ -36,9 +36,6 @@ public class ChartActivity extends AppCompatActivity {
         dataEntryList.add(new ValueDataEntry("Sprint", 200));
         dataEntryList.add(new ValueDataEntry("American Airline", 150));
 
-
-
-
         /*piechart.data(dataEntryList);
 
         Bullet bullet = AnyChart.bullet();

@@ -8,7 +8,7 @@ import com.example.shaochengyang.deltaapp.ui.data.database.MyFlightTicketContrac
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
     public static final String MYDATABASE = "DeltaDB";
-    public static final int VERSION = 6;
+    public static final int VERSION = 7;
     public static final String SCTABLE = "DCityTable";
     public static final String KEY_ID = "key_id";
     public static final String CITY_NAMES = "cityname";

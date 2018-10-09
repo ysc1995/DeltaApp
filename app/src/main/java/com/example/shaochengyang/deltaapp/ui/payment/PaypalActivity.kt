@@ -29,6 +29,16 @@ class PaypalActivity : AppCompatActivity() ,IDataManager.onUpdatingTicketListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_paypal)
         iDataManager = DataManager(this)
+        val thingToBuy = getThingToBuy(PayPalPayment.PAYMENT_INTENT_SALE)
+        val intent = Intent(this@PaypalActivity,
+                PaymentActivity::class.java)
+
+        // send the same configuration for restart resiliency
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config)
+
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy)
+
+        startActivityForResult(intent, REQUEST_CODE_PAYMENT)
     }
 
     fun displayResult(result:String){

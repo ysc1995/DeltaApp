@@ -201,8 +201,8 @@ public class ConfirmationPageActivity extends AppCompatActivity {
             protected PasswordAuthentication getPasswordAuthentication() {
                 //TODO: hardcode email and password
                 return new PasswordAuthentication(
-                        email,
-                        password);
+                        "mickeyguo29@gmail.com",
+                        "Xin15634145");
             }
         });
     }
@@ -211,18 +211,20 @@ public class ConfirmationPageActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_fc_select_seat:
+                String ticketID = getIntent().getExtras().getString("ticketID");
                 //numofTicket = getIntent().getExtras().getString("numofTicket");
                 if (!isFirst) {
                     Intent intent = new Intent(this, EcoSeatReserveActivity.class);
                     intent.putExtra("busid", flight.getBusid());
                     intent.putExtra("numofTicket", flightTicket.getNumOfPassenger());
+                    intent.putExtra("ticketID",ticketID);
 
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(this, FirstClassSeatReserveActivity.class);
                     intent.putExtra("busid", flight.getBusid());
                     intent.putExtra("numofTicket", flightTicket.getNumOfPassenger());
-
+                    intent.putExtra("ticketID",ticketID);
                     startActivity(intent);
                 }
                 break;
