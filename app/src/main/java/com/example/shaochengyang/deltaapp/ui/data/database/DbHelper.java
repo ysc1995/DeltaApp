@@ -140,4 +140,14 @@ public class DbHelper implements IDbHelper {
         scdatabase.update(MyFlightTicketEntry.TABLE_NAME, values, CustomerFlightEntry.FticketID + "=" + "'AA135'", null);
 
     }
+
+    @Override
+    public void storeSeatID(String id, String ticketID) {
+        ContentValues values = new ContentValues();
+        values.put(DatabaseOpenHelper.STICKET_ID,ticketID);
+        values.put(DatabaseOpenHelper.SSEAT_ID,id);
+
+
+        scdatabase.insert(openHelper.STABLE,null,values);
+    }
 }

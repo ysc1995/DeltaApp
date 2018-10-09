@@ -60,6 +60,11 @@ public class DataManager implements IDataManager {
         dbHelper.updateTicket(onUpdatingTicketListener, id);
     }
 
+    @Override
+    public void storeSeatID(String id, String ticketID) {
+        dbHelper.storeSeatID(id,ticketID);
+    }
+
 
     @Override
     public void addRow(onDatabaseListener onDatabaseListener, String cityName, String cityLati, String cityLong) {

@@ -8,7 +8,7 @@ import com.example.shaochengyang.deltaapp.ui.data.database.MyFlightTicketContrac
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
     public static final String MYDATABASE = "DeltaDB";
-    public static final int VERSION = 5;
+    public static final int VERSION = 6;
     public static final String SCTABLE = "DCityTable";
     public static final String KEY_ID = "key_id";
     public static final String CITY_NAMES = "cityname";
@@ -16,7 +16,10 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     public static final String CITY_LONG = "Citylongtitude";
 
 
-
+    public static final String STABLE = "SeatTable";
+    public static final String SKEY_ID = "key_id";
+    public static final String STICKET_ID = "ticketID";
+    public static final String SSEAT_ID = "seatID";
 
     public DatabaseOpenHelper(Context context) {
         super(context,MYDATABASE,null, VERSION);
@@ -33,6 +36,12 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
                 + CITY_LONG + " TEXT" + ")";
 
         sqLiteDatabase.execSQL(CREATE_TABLE);
+
+        String CREATE_SEAT_TABLE = "CREATE TABLE " + STABLE + "("
+                + SKEY_ID + " INTEGER PRIMARY KEY,"
+                + STICKET_ID + " TEXT,"
+                + SSEAT_ID + " TEXT" + ")";
+        sqLiteDatabase.execSQL(CREATE_SEAT_TABLE);
 
         String CREATE_CUSTOMERFLIGHT_TABLE = "CREATE TABLE "
                 + CustomerFlightEntry.TABLE_NAME + "("
@@ -66,6 +75,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SCTABLE);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + STABLE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyFlightTicketEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CustomerFlightEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);

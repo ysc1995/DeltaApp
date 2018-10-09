@@ -18,6 +18,7 @@ import com.example.shaochengyang.deltaapp.ui.data.IDataManager
 import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket
 import com.example.shaochengyang.deltaapp.ui.flightconfirmation.ConfirmationPageActivity
 import kotlinx.android.synthetic.main.activity_paypal.*
+import java.util.*
 
 class PaypalActivity : AppCompatActivity() ,IDataManager.onUpdatingTicketListener{
 
@@ -63,6 +64,9 @@ class PaypalActivity : AppCompatActivity() ,IDataManager.onUpdatingTicketListene
                 , "Flight Ticket", paymentIntent)
     }
 
+    fun IntRange.random() =
+            Random().nextInt((endInclusive + 1) - start) +  start
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_CODE_PAYMENT) {
             if (resultCode == Activity.RESULT_OK) {
@@ -75,7 +79,11 @@ class PaypalActivity : AppCompatActivity() ,IDataManager.onUpdatingTicketListene
 
                         Log.i(TAG, confirm.toJSONObject().getJSONObject("response").get("id").toString())
                         val id:String = confirm.toJSONObject().getJSONObject("response").get("id").toString()
-                        iDataManager?.updateTicket(this,id)
+
+
+                        val num : Int? = (0..100).random()
+
+                        iDataManager?.updateTicket(this,id+num)
 
 
 
@@ -86,6 +94,7 @@ class PaypalActivity : AppCompatActivity() ,IDataManager.onUpdatingTicketListene
                         var isFirst: Boolean = getIntent().extras!!.getBoolean("isFirst")
                         intent.putExtra("isFirst", isFirst)
                         intent.putExtra("ticket", flightTicket)
+                        intent.putExtra("ticketID",id+num)
                         startActivity(intent)
 
 

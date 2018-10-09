@@ -1,5 +1,6 @@
 package com.example.shaochengyang.deltaapp.ui.seatreserve.firstclassseat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,11 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.DataManager;
 import com.example.shaochengyang.deltaapp.ui.data.IDataManager;
 import com.example.shaochengyang.deltaapp.ui.data.model.SeatInformation;
+import com.example.shaochengyang.deltaapp.ui.main.MainActivity;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat.EcoSeatReserveActivity;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
 
@@ -30,6 +33,7 @@ public class FirstClassSeatMapFragment extends Fragment implements IDataManager.
     List<Seat> seatList;
     Button clearButton,comfirmButton;
     int numTicket;
+    String ticketID;
     Set<String> seatIDSet;
 
     @Nullable
@@ -52,11 +56,12 @@ public class FirstClassSeatMapFragment extends Fragment implements IDataManager.
         String nTicket = activity.getNumber();
         numTicket = Integer.parseInt(nTicket);
         String busid = activity.getBusId();
+        ticketID = activity.getTicketID();
         //numTicket = Integer.parseInt(nTicket);
 
 
 
-        IDataManager iDataManager = new DataManager(getActivity());
+        final IDataManager iDataManager = new DataManager(getActivity());
         iDataManager.getSeatInformation(this, busid);
 
 
@@ -81,10 +86,24 @@ public class FirstClassSeatMapFragment extends Fragment implements IDataManager.
             @Override
             public void onClick(View v) {
                 seatIDSet = new HashSet<>();
-                for(int i = 0; i < 14; i ++){
+                int count = 0;
+                for(int i = 0 ; i < 14 ; i ++){
                     if(seatList.get(i).getIschoosed()){
-                        seatIDSet.add(seatList.get(i).getId());
+                        count++;
                     }
+                }
+                if(count<numTicket){
+                    Toast.makeText(getActivity(), "Please Select Enough Number of Seats", Toast.LENGTH_SHORT).show();
+                }else {
+                    for (int i = 0; i < 14; i++) {
+                        if (seatList.get(i).getIschoosed()) {
+                            seatIDSet.add(seatList.get(i).getId());
+
+                            iDataManager.storeSeatID(seatList.get(i).getId(), ticketID);
+                        }
+                    }
+                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    startActivity(i);
                 }
 
 

@@ -1,5 +1,6 @@
 package com.example.shaochengyang.deltaapp.ui.seatreserve.ecoseat;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,11 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.shaochengyang.deltaapp.R;
 import com.example.shaochengyang.deltaapp.ui.data.DataManager;
 import com.example.shaochengyang.deltaapp.ui.data.IDataManager;
 import com.example.shaochengyang.deltaapp.ui.data.model.SeatInformation;
+import com.example.shaochengyang.deltaapp.ui.main.MainActivity;
 import com.example.shaochengyang.deltaapp.ui.seatreserve.model.Seat;
 
 import java.util.ArrayList;
@@ -32,6 +35,7 @@ public class EcoSeatMapFragment extends Fragment implements IDataManager.onSeatI
     List<Seat> seatList;
     Button clearButton, comfirmButton;
     int numTicket;
+    String ticketID;
     Set<String> seatIDSet;
 
     @Nullable
@@ -47,6 +51,7 @@ public class EcoSeatMapFragment extends Fragment implements IDataManager.onSeatI
         EcoSeatReserveActivity activity = (EcoSeatReserveActivity) getActivity();
         String nTicket = activity.getNumber();
         String busid = activity.getBusId();
+        ticketID = activity.getTicketID();
         numTicket = Integer.parseInt(nTicket);
 
        /* sharedPreferences = this.getActivity().getSharedPreferences("mySP", 0);
@@ -62,7 +67,7 @@ public class EcoSeatMapFragment extends Fragment implements IDataManager.onSeatI
 
 
         //get seat info from api
-        IDataManager iDataManager = new DataManager(getActivity());
+        final IDataManager iDataManager = new DataManager(getActivity());
         iDataManager.getSeatInformation(this,busid);
 
 
@@ -79,15 +84,29 @@ public class EcoSeatMapFragment extends Fragment implements IDataManager.onSeatI
             }
         });
 
+
         comfirmButton = view.findViewById(R.id.comfirmButton);
         comfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 seatIDSet = new HashSet<>();
-                for(int i = 0; i < 46; i ++){
+                int count = 0;
+                for(int i = 0 ; i < 46 ; i ++){
                     if(seatList.get(i).getIschoosed()){
-                        seatIDSet.add(seatList.get(i).getId());
+                        count++;
                     }
+                }
+                if(count<numTicket){
+                    Toast.makeText(getActivity(), "Please Select Enough Number of Seats", Toast.LENGTH_SHORT).show();
+                }else {
+                    for (int i = 0; i < 46; i++) {
+                        if (seatList.get(i).getIschoosed()) {
+                            seatIDSet.add(seatList.get(i).getId());
+                            iDataManager.storeSeatID(seatList.get(i).getId(), ticketID);
+                        }
+                    }
+                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    startActivity(i);
                 }
 
 

@@ -97,16 +97,20 @@ public class ConfirmationPageActivity extends AppCompatActivity {
     @OnClick(R.id.btn_fc_select_seat)
     public void onViewClicked() {
         //numofTicket = getIntent().getExtras().getString("numofTicket");
+        String ticketID = getIntent().getExtras().getString("ticketID");
         if(!isFirst) {
+
             Intent intent = new Intent(this, EcoSeatReserveActivity.class);
             intent.putExtra("busid", flight.getBusid());
             intent.putExtra("numofTicket", flightTicket.getNumOfPassenger());
+            intent.putExtra("ticketID",ticketID);
 
             startActivity(intent);
         }else{
             Intent intent = new Intent(this, FirstClassSeatReserveActivity.class);
             intent.putExtra("busid", flight.getBusid());
             intent.putExtra("numofTicket", flightTicket.getNumOfPassenger());
+            intent.putExtra("ticketID",ticketID);
 
             startActivity(intent);
         }
