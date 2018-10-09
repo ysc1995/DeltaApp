@@ -18,6 +18,7 @@ import com.example.shaochengyang.deltaapp.ui.data.model.BusinformationItem;
 import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.data.model.MyFlightTicket;
 import com.example.shaochengyang.deltaapp.ui.flightconfirmation.ConfirmationPageActivity;
+import com.example.shaochengyang.deltaapp.ui.upcomingflightconfirm.UpComingFlightConfirmActivity;
 
 import java.util.List;
 
@@ -57,11 +58,13 @@ public class UpcomingFlightFragment extends Fragment implements IUpcomingFlightV
                 , new MyFlightListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(MyFlightTicket ticket) {
-                /*Intent intent = new Intent(getActivity(), ConfirmationPageActivity.class);
-                startActivity(intent);*/
-                Toast.makeText(getActivity(), "" +ticket.getTicketId(),
-                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), UpComingFlightConfirmActivity.class);
+                startActivity(intent);
+
+                /*Toast.makeText(getActivity(), "" +ticket.getTicketId(),
+                        Toast.LENGTH_SHORT).show();*/
             }
         });
+        rvMyflight.setAdapter(adapter);
     }
 }

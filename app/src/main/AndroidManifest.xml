@@ -56,9 +56,8 @@
         <activity android:name=".ui.purchaseticket.PurchaseTicketActivity" />
         <activity android:name=".ui.compareshowflight.DemoFlightDetailActivity" />
         <activity android:name=".ui.compareshowflight.DemoConfirmationPageActivity" />
-        <activity android:name=".ui.payment.PaypalActivity">
-
-        </activity>
+        <activity android:name=".ui.payment.PaypalActivity"></activity>
+        <activity android:name=".ui.upcomingflightconfirm.UpComingFlightConfirmActivity"></activity>
     </application>
 
 </manifest>
