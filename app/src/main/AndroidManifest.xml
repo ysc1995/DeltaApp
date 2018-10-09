@@ -30,7 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.authentication.login.LoginActivity" />
+        <activity android:name=".ui.authentication.login.LoginActivity">
+
+        </activity>
         <activity android:name=".ui.seatreserve.ecoseat.EcoSeatReserveActivity" />
         <activity android:name=".ui.seatreserve.firstclassseat.FirstClassSeatReserveActivity" />
         <activity android:name=".ui.ChartActivity" />
