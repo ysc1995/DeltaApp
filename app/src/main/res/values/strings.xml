@@ -81,4 +81,6 @@
 
     <string name="payment_btn">Pay</string>
 
+    <string name="btn_send_email">Send Email</string>
+
 </resources>
