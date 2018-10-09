@@ -17,9 +17,14 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 
-    /*@Test
+    @Test
     public void testCustomerFlight(){
         CustomerFlight customerFlight
-                = new CustomerFlight("Mikki", "")
-    }*/
+                = new CustomerFlight("sunnyday@gmail.com",
+                "Day", "Sunny", "G13234345", "ticket123");
+        String fname = customerFlight.getFname();
+        String lname = customerFlight.getLname();
+        assertEquals(fname,"Day");
+        assertEquals(lname, "Sunny");
+    }
 }

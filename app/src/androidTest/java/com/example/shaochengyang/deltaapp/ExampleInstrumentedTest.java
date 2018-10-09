@@ -2,11 +2,19 @@ package com.example.shaochengyang.deltaapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.example.shaochengyang.deltaapp.ui.ChartActivity;
+
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
 /**
@@ -22,5 +30,14 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.example.shaochengyang.deltaapp", appContext.getPackageName());
+    }
+
+    @Rule
+    public ActivityTestRule<ChartActivity> rule  = new ActivityTestRule<>(ChartActivity.class);
+
+    @Test
+    public void testTextView(){
+        onView(withId(R.id.textView9)).check(matches(isDisplayed()));
+        onView(withId(R.id.any_chart_view)).check(matches(isDisplayed()));
     }
 }
