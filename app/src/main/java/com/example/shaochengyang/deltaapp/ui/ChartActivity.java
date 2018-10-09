@@ -32,9 +32,12 @@ public class ChartActivity extends AppCompatActivity {
 
         Pie piechart = AnyChart.pie();
         List<DataEntry> dataEntryList = new ArrayList<>();
-        dataEntryList.add(new ValueDataEntry("umm", 8000));
-        dataEntryList.add(new ValueDataEntry("ummm", 1000));
-        dataEntryList.add(new ValueDataEntry("ummmm", 10000));
+        dataEntryList.add(new ValueDataEntry("DELTA", 100));
+        dataEntryList.add(new ValueDataEntry("Sprint", 200));
+        dataEntryList.add(new ValueDataEntry("American Airline", 150));
+
+
+
 
         /*piechart.data(dataEntryList);
 

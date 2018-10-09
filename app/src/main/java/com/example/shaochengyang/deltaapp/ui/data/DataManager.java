@@ -75,6 +75,11 @@ public class DataManager implements IDataManager {
         dbHelper.getSeatInfo(infoListener,ticketID);
     }
 
+    @Override
+    public void getFlightInfo(onFlightInfoListener onFlightInfoListener, String ticketID) {
+        dbHelper.getFlightInfo(onFlightInfoListener,ticketID);
+    }
+
 
     @Override
     public void addRow(onDatabaseListener onDatabaseListener, String cityName, String cityLati, String cityLong) {

@@ -197,4 +197,36 @@ public class DbHelper implements IDbHelper {
         }while(cursor.moveToNext());
         infoListener.passSeatInfo(seatList);
     }
+
+    @Override
+    public void getFlightInfo(IDataManager.onFlightInfoListener onFlightInfoListener, String ticketID) {
+        MyFlightTicket ticket = null;
+        Cursor cursor = scdatabase.rawQuery("SELECT * FROM " + MyFlightTicketEntry.TABLE_NAME, null);
+        if (cursor.moveToFirst()) {
+            do {
+                //Log.d(TAG, "readProductListFromShoppingCartDB: ");
+                String tId = cursor.getString(cursor.getColumnIndex(MyFlightTicketEntry.FticketID));
+                String numOfPass = cursor.getString(cursor.getColumnIndex(MyFlightTicketEntry.FnumOfPassenger));
+                String flightnum = cursor.getString(cursor.getColumnIndex(MyFlightTicketEntry.Fnumber));
+                String cabin = cursor.getString(cursor.getColumnIndex(MyFlightTicketEntry.Fcabin));
+                String price = cursor.getString(cursor.getColumnIndex(MyFlightTicketEntry.Fprice));
+                String depAirport = cursor.getString(cursor.getColumnIndex(MyFlightTicketEntry.FdepAirport));
+                String arrAirport = cursor.getString(cursor.getColumnIndex(MyFlightTicketEntry.FarrAirport));
+                String depTime = cursor.getString(cursor.getColumnIndex(MyFlightTicketEntry.FdepTime));
+                String arrTime = cursor.getString(cursor.getColumnIndex(MyFlightTicketEntry.FarrTime));
+                String fduration = cursor.getString(cursor.getColumnIndex(MyFlightTicketEntry.Fduration));
+
+                if(tId.equals(ticketID)){
+                    ticket = new MyFlightTicket(tId, numOfPass,
+                            flightnum, cabin, price, depAirport, arrAirport, depTime,arrTime, fduration);
+                    break;
+                }
+
+
+
+            } while (cursor.moveToNext());
+            onFlightInfoListener.passFlightInfo(ticket);
+
+        }
+    }
 }

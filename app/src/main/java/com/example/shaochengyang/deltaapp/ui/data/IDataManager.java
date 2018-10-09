@@ -66,4 +66,9 @@ public interface IDataManager extends INetworkHelper ,IDbHelper{
 
         void passSeatInfo(List<String> seatList);
     }
+    
+    interface onFlightInfoListener{
+
+        void passFlightInfo(MyFlightTicket ticket);
+    }
 }
