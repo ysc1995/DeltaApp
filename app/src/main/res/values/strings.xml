@@ -56,7 +56,7 @@
 
 
     <!--login-->
-    <string name="login_title">Log In To My Delta</string>
+    <string name="login_title">Fly Delta</string>
     <string name="login_button">LOG IN</string>
     <string name="title_activity_maps">Map</string>
 

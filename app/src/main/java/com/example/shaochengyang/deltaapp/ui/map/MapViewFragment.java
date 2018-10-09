@@ -1,14 +1,20 @@
 package com.example.shaochengyang.deltaapp.ui.map;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shaochengyang.deltaapp.R;
+import com.facebook.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -33,8 +39,12 @@ import java.util.concurrent.TimeUnit;
 
 public class MapViewFragment extends Fragment {
 
+    private static final String TAG = "MapViewFragment";
+
     MapView mMapView;
     private GoogleMap mMap;
+
+    String departLati, departLong, arrLati, arrLong, departCity, arrCity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +57,7 @@ public class MapViewFragment extends Fragment {
 
         try {
             MapsInitializer.initialize(getActivity().getApplicationContext());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,6 +66,7 @@ public class MapViewFragment extends Fragment {
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 mMap = googleMap;
+
 
         /*LatLng barcelona = new LatLng(41.385064,2.173403);
         mMap.addMarker(new MarkerOptions().position(barcelona).title("Marker in Barcelona"));
@@ -67,14 +79,15 @@ public class MapViewFragment extends Fragment {
                 //Define list to get all latlng for the route
                 List<LatLng> path = new ArrayList();
 
-                LatLng barcelona = new LatLng(41.385064,2.173403);
+                LatLng barcelona = new LatLng(41.385064, 2.173403);
                 mMap.addMarker(new MarkerOptions().position(barcelona).title("Marker in Barcelona"));
 
-                LatLng madrid = new LatLng(40.416775,-3.70379);
+                LatLng madrid = new LatLng(40.416775, -3.70379);
                 mMap.addMarker(new MarkerOptions().position(madrid).title("Marker in Madrid"));
 
                 String origin = "41.385064,2.173403";
                 String destination = "40.416775,-3.70379";
+
 
                 DirectionsApiRequest req = DirectionsApi.getDirections(getGeoContext(), origin, destination);
                 try {
@@ -85,14 +98,14 @@ public class MapViewFragment extends Fragment {
                         //Log.d("MyTag", "hi");
                         DirectionsRoute route = res.routes[0];
 
-                        if (route.legs !=null) {
-                            for(int i=0; i<route.legs.length; i++) {
+                        if (route.legs != null) {
+                            for (int i = 0; i < route.legs.length; i++) {
                                 DirectionsLeg leg = route.legs[i];
                                 if (leg.steps != null) {
-                                    for (int j=0; j<leg.steps.length;j++){
+                                    for (int j = 0; j < leg.steps.length; j++) {
                                         DirectionsStep step = leg.steps[j];
-                                        if (step.steps != null && step.steps.length >0) {
-                                            for (int k=0; k<step.steps.length;k++){
+                                        if (step.steps != null && step.steps.length > 0) {
+                                            for (int k = 0; k < step.steps.length; k++) {
                                                 DirectionsStep step1 = step.steps[k];
                                                 EncodedPolyline points1 = step1.polyline;
                                                 if (points1 != null) {
@@ -118,7 +131,7 @@ public class MapViewFragment extends Fragment {
                             }
                         }
                     }
-                } catch(Exception ex) {
+                } catch (Exception ex) {
                     Log.d("MyTag", ex.toString());
                 }
 
@@ -130,8 +143,7 @@ public class MapViewFragment extends Fragment {
                             .color(Color.BLUE)
                             .width(5);
                     mMap.addPolyline(opts);
-                }
-                else{
+                } else {
                     Log.d("MyTag", "error");
                 }
 
@@ -139,16 +151,19 @@ public class MapViewFragment extends Fragment {
 
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(barcelona, 6));
             }
-
-            public GeoApiContext getGeoContext() {
-                GeoApiContext geoApiContext = new GeoApiContext();
-                return geoApiContext.setQueryRateLimit(3).setApiKey(getString(R.string.google_maps_key))
-                        .setConnectTimeout(1, TimeUnit.SECONDS).setReadTimeout(1, TimeUnit.SECONDS)
-                        .setWriteTimeout(1, TimeUnit.SECONDS);
-            }
         });
 
         return rootView;
+    }
+
+
+
+
+    public GeoApiContext getGeoContext() {
+        GeoApiContext geoApiContext = new GeoApiContext();
+        return geoApiContext.setQueryRateLimit(3).setApiKey(getString(R.string.google_maps_key))
+                .setConnectTimeout(1, TimeUnit.SECONDS).setReadTimeout(1, TimeUnit.SECONDS)
+                .setWriteTimeout(1, TimeUnit.SECONDS);
     }
 
     @Override

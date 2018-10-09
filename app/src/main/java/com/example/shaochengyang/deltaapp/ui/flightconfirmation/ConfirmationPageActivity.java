@@ -199,9 +199,10 @@ public class ConfirmationPageActivity extends AppCompatActivity {
 
         return Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
+                //TODO: hardcode email and password
                 return new PasswordAuthentication(
-                        "mickeyguo29@gmail.com",
-                        "xin771634495");
+                        useremail,
+                        userpassword);
             }
         });
     }
