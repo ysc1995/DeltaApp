@@ -65,6 +65,16 @@ public class DataManager implements IDataManager {
         dbHelper.storeSeatID(id,ticketID);
     }
 
+    @Override
+    public void getPassenterInfo(onPassenterInfoListener onPassenterInfoListener, String ticketID) {
+        dbHelper.getPassenterInfo(onPassenterInfoListener,ticketID);
+    }
+
+    @Override
+    public void getSeatInfo(onSeatInfoListener infoListener, String ticketID) {
+        dbHelper.getSeatInfo(infoListener,ticketID);
+    }
+
 
     @Override
     public void addRow(onDatabaseListener onDatabaseListener, String cityName, String cityLati, String cityLong) {

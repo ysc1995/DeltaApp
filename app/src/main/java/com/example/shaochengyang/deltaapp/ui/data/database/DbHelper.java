@@ -13,6 +13,7 @@ import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.data.database.MyFlightTicketContract.MyFlightTicketEntry;
 import com.example.shaochengyang.deltaapp.ui.data.database.CustomerFlightContract.CustomerFlightEntry;
 import com.example.shaochengyang.deltaapp.ui.data.model.MyFlightTicket;
+import com.example.shaochengyang.deltaapp.ui.data.model.PassenterInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -149,5 +150,51 @@ public class DbHelper implements IDbHelper {
 
 
         scdatabase.insert(openHelper.STABLE,null,values);
+    }
+
+
+
+
+
+    @Override
+    public void getPassenterInfo(IDataManager.onPassenterInfoListener onPassenterInfoListener, String ticketID) {
+        List<PassenterInfo> passenterInfoList = new ArrayList<>();
+        Cursor cursor = scdatabase.rawQuery("SELECT * FROM " + CustomerFlightEntry.TABLE_NAME, null);
+        cursor.moveToFirst();
+        do{
+            String tid = cursor.getString(cursor.getColumnIndex(CustomerFlightEntry.FticketID));
+            String fname = cursor.getString(cursor.getColumnIndex(CustomerFlightEntry.CusFname));
+            String lname = cursor.getString(cursor.getColumnIndex(CustomerFlightEntry.CusLname));
+            String passport = cursor.getString(cursor.getColumnIndex(CustomerFlightEntry.CusPassport));
+
+
+            if(tid.equals(ticketID)){
+                PassenterInfo passenterInfo = new PassenterInfo(fname,lname,passport);
+                passenterInfoList.add(passenterInfo);
+            }
+
+
+        }while(cursor.moveToNext());
+
+        onPassenterInfoListener.passPassengerInfo(passenterInfoList);
+    }
+
+    @Override
+    public void getSeatInfo(IDataManager.onSeatInfoListener infoListener, String ticketID) {
+        List<String> seatList = new ArrayList<>();
+        Cursor cursor = scdatabase.rawQuery("SELECT * FROM " + openHelper.STABLE, null);
+        cursor.moveToFirst();
+        do{
+            String tid = cursor.getString(cursor.getColumnIndex(openHelper.STICKET_ID));
+            String seatid = cursor.getString(cursor.getColumnIndex(openHelper.SSEAT_ID));
+
+
+            if(tid.equals(ticketID)){
+                seatList.add(seatid);
+            }
+
+
+        }while(cursor.moveToNext());
+        infoListener.passSeatInfo(seatList);
     }
 }

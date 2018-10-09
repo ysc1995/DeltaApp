@@ -1,6 +1,9 @@
 package com.example.shaochengyang.deltaapp.ui.data.model;
 
-public class MyFlightTicket {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class MyFlightTicket implements Parcelable {
     String ticketId, create_time, numOfPass, flightnum, cabin,
             price, depAirport, arrAirport, depTime,arrTime, fduration;
 
@@ -21,6 +24,32 @@ public class MyFlightTicket {
         this.arrTime = arrTime;
         this.fduration = fduration;
     }
+
+    protected MyFlightTicket(Parcel in) {
+        ticketId = in.readString();
+        create_time = in.readString();
+        numOfPass = in.readString();
+        flightnum = in.readString();
+        cabin = in.readString();
+        price = in.readString();
+        depAirport = in.readString();
+        arrAirport = in.readString();
+        depTime = in.readString();
+        arrTime = in.readString();
+        fduration = in.readString();
+    }
+
+    public static final Creator<MyFlightTicket> CREATOR = new Creator<MyFlightTicket>() {
+        @Override
+        public MyFlightTicket createFromParcel(Parcel in) {
+            return new MyFlightTicket(in);
+        }
+
+        @Override
+        public MyFlightTicket[] newArray(int size) {
+            return new MyFlightTicket[size];
+        }
+    };
 
     public String getTicketId() {
         return ticketId;
@@ -64,5 +93,25 @@ public class MyFlightTicket {
 
     public String getFduration() {
         return fduration;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(ticketId);
+        dest.writeString(create_time);
+        dest.writeString(numOfPass);
+        dest.writeString(flightnum);
+        dest.writeString(cabin);
+        dest.writeString(price);
+        dest.writeString(depAirport);
+        dest.writeString(arrAirport);
+        dest.writeString(depTime);
+        dest.writeString(arrTime);
+        dest.writeString(fduration);
     }
 }

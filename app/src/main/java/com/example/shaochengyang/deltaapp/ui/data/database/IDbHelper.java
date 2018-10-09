@@ -3,6 +3,7 @@ package com.example.shaochengyang.deltaapp.ui.data.database;
 import com.example.shaochengyang.deltaapp.ui.data.IDataManager;
 import com.example.shaochengyang.deltaapp.ui.data.model.CustomerFlight;
 import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
+import com.example.shaochengyang.deltaapp.ui.upcomingflightconfirm.UpComingFlightConfirmActivity;
 
 import java.util.List;
 
@@ -23,4 +24,8 @@ public interface IDbHelper {
     void updateTicket(IDataManager.onUpdatingTicketListener onUpdatingTicketListener, String id);
 
     void storeSeatID(String id, String ticketID);
+
+    void getPassenterInfo(IDataManager.onPassenterInfoListener onPassenterInfoListener, String ticketID);
+
+    void getSeatInfo(IDataManager.onSeatInfoListener infoListener, String ticketID);
 }

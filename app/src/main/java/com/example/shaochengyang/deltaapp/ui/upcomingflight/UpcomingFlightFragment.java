@@ -59,6 +59,19 @@ public class UpcomingFlightFragment extends Fragment implements IUpcomingFlightV
             @Override
             public void onItemClick(MyFlightTicket ticket) {
                 Intent intent = new Intent(getActivity(), UpComingFlightConfirmActivity.class);
+
+
+
+                intent.putExtra("ticketID",ticket.getTicketId());
+                intent.putExtra("depAirport",ticket.getDepAirport());
+                intent.putExtra("arrAirport",ticket.getArrAirport());
+                intent.putExtra("cabin",ticket.getCabin());
+                intent.putExtra("depTime",ticket.getDepTime());
+                intent.putExtra("arrTime",ticket.getArrTime());
+                intent.putExtra("flightNum",ticket.getFlightnum());
+                intent.putExtra("flightDuration",ticket.getFduration());
+
+
                 startActivity(intent);
 
                 /*Toast.makeText(getActivity(), "" +ticket.getTicketId(),

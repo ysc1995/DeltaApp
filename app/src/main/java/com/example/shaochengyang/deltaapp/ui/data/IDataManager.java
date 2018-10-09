@@ -4,6 +4,7 @@ import com.example.shaochengyang.deltaapp.ui.data.database.IDbHelper;
 import com.example.shaochengyang.deltaapp.ui.data.model.BusInformation;
 import com.example.shaochengyang.deltaapp.ui.data.model.FlightTicket;
 import com.example.shaochengyang.deltaapp.ui.data.model.MyFlightTicket;
+import com.example.shaochengyang.deltaapp.ui.data.model.PassenterInfo;
 import com.example.shaochengyang.deltaapp.ui.data.model.SeatInformation;
 import com.example.shaochengyang.deltaapp.ui.data.network.INetworkHelper;
 import com.example.shaochengyang.deltaapp.ui.data.network.comparedemo.model.DemoItem;
@@ -53,5 +54,16 @@ public interface IDataManager extends INetworkHelper ,IDbHelper{
     interface onUpdatingTicketListener{
 
     }
+    
+    interface onPassenterInfoListener{
 
+        
+
+        void passPassengerInfo(List<PassenterInfo> passenterInfoList);
+    }
+
+    interface onSeatInfoListener{
+
+        void passSeatInfo(List<String> seatList);
+    }
 }
