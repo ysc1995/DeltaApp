@@ -201,8 +201,8 @@ public class ConfirmationPageActivity extends AppCompatActivity {
             protected PasswordAuthentication getPasswordAuthentication() {
                 //TODO: hardcode email and password
                 return new PasswordAuthentication(
-                        useremail,
-                        userpassword);
+                        email,
+                        password);
             }
         });
     }
