@@ -5,6 +5,17 @@
     <string name="facebook_application_id" translatable="false">736714640021560</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb736714640021560</string>
 
+    <!--City Names-->
+    <string-array name="city_names">
+        <item>St.Charles, IL</item>
+        <item>New York City, NY</item>
+        <item>Dallas, TX</item>
+        <item>Atlanta, GA</item>
+        <item>Washington, DC</item>
+        <item>Philadelphia, PA</item>
+        <item>Denver, CO</item>
+    </string-array>
+
     <!--Book A Flight-->
     <string name="bf_tableft">ROUND-TRIP</string>
     <string name="bf_tabcenter">ONE-WAY</string>
@@ -33,7 +44,7 @@
 
     <!--bottom menu-->
     <string name="bm_mytrip">My Trip</string>
-    <string name="bm_today">Upcoming</string>
+    <string name="bm_today">Flight</string>
     <string name="bm_book">Book</string>
     <string name="bm_feed">Map</string>
     <string name="bm_more">More</string>
@@ -56,7 +67,7 @@
 
 
     <!--login-->
-    <string name="login_title">Log In To My Delta</string>
+    <string name="login_title">Fly Delta</string>
     <string name="login_button">LOG IN</string>
     <string name="title_activity_maps">Map</string>
 
@@ -80,5 +91,7 @@
     <string name="title_activity_maps2">Map</string>
 
     <string name="payment_btn">Pay</string>
+
+    <string name="btn_send_email">Send Email</string>
 
 </resources>

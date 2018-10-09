@@ -18,4 +18,8 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="LoginTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowBackground">@drawable/backgroundlogin</item>
+    </style>
+
 </resources>

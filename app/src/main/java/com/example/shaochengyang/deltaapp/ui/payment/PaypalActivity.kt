@@ -47,7 +47,8 @@ class PaypalActivity : AppCompatActivity() ,IDataManager.onUpdatingTicketListene
          * See getStuffToBuy(..) for examples of some available payment options.
          */
 
-        val intent = Intent(this@PaypalActivity, PaymentActivity::class.java)
+        val intent = Intent(this@PaypalActivity,
+                PaymentActivity::class.java)
 
         // send the same configuration for restart resiliency
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config)

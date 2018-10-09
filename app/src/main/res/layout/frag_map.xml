@@ -1,12 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <org.angmarch.views.NiceSpinner
+            android:id="@+id/from_spinner"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:background="#51505d"
+            android:text="@string/bf_from"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/background_light" />
+
+        <org.angmarch.views.NiceSpinner
+            android:id="@+id/to_spinner"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:text="To"
+            android:background="#51505d"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/background_light"/>
+
+        <ImageView
+            android:id="@+id/img_mapclick"
+            android:layout_width="50dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_chevron_right_black_24dp"
+            android:background="@android:color/background_light"/>
+
+    </LinearLayout>
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="611dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="48dp" />
 
 </RelativeLayout>
